@@ -1,4 +1,101 @@
 package com.trazavid.Entity;
 
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name ="Institucion")
 public class Institucion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_institucion;
+
+    @Column(length= 50)
+    private String nombre;
+
+    @Column(length= 40 )
+    private String direccion;
+
+    @Column(length= 40 )
+    private String ciudad;
+
+    @Column(length= 40 )
+    private String provincia;
+
+    @Column(length= 15)
+    private Integer telefono;
+
+    @Column(length= 15)
+    private Integer director;
+
+    public Institucion() {
+    }
+
+    public Institucion(String nombre, String direccion, String ciudad, String provincia, Integer telefono, Integer director) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+        this.telefono = telefono;
+        this.director = director;
+    }
+
+    public Long getId_institucion() {
+        return id_institucion;
+    }
+
+    public void setId_institucion(Long id_institucion) {
+        this.id_institucion = id_institucion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public Integer getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
+    }
+
+    public Integer getDirector() {
+        return director;
+    }
+
+    public void setDirector(Integer director) {
+        this.director = director;
+    }
 }

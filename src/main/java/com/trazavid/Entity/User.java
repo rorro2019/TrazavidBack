@@ -36,9 +36,9 @@ public class User implements Serializable {
     @Size(max = 120)
     private String password;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "id_person")
-    private Person person;
+    //@OneToOne(cascade = {CascadeType.ALL})
+    //@JoinColumn(name = "id_person")
+    //private Person person;
 
     //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     //private List<Line> lines = new ArrayList<>() ;
@@ -87,13 +87,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 
 
 
