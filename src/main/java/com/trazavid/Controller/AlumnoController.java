@@ -19,10 +19,12 @@ public class AlumnoController {
     @Resource
     private AlumnoService alumnoService;
 
+
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody Alumno alumno){
         return ResponseEntity.status(HttpStatus.CREATED).body(alumnoService.save(alumno));
+
     }
 
     @GetMapping(value = "/all")
