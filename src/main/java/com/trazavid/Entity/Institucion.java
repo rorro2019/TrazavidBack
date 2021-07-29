@@ -31,16 +31,44 @@ public class Institucion {
     @Column(length= 15)
     private Integer director;
 
+    @Column
+    private Boolean comun;
+    @Column
+    private Boolean especial;
+    @Column
+    private Boolean otra;
+    @Column
+    private Boolean inicial;
+    @Column
+    private Boolean primario;
+    @Column
+    private Boolean secundario;
+    @Column
+    private Boolean manana;
+    @Column
+    private Boolean tarde;
+    @Column
+    private Boolean tanocherde;
+
     public Institucion() {
     }
 
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Integer telefono, Integer director) {
+    public Institucion(String nombre, String direccion, String ciudad, String provincia, Integer telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean tanocherde) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
         this.provincia = provincia;
         this.telefono = telefono;
         this.director = director;
+        this.comun = comun;
+        this.especial = especial;
+        this.otra = otra;
+        this.inicial = inicial;
+        this.primario = primario;
+        this.secundario = secundario;
+        this.manana = manana;
+        this.tarde = tarde;
+        this.tanocherde = tanocherde;
     }
 
     public Long getId_institucion() {
@@ -97,5 +125,77 @@ public class Institucion {
 
     public void setDirector(Integer director) {
         this.director = director;
+    }
+
+    public Boolean getComun() {
+        return comun;
+    }
+
+    public void setComun(Boolean comun) {
+        this.comun = comun;
+    }
+
+    public Boolean getEspecial() {
+        return especial;
+    }
+
+    public void setEspecial(Boolean especial) {
+        this.especial = especial;
+    }
+
+    public Boolean getOtra() {
+        return otra;
+    }
+
+    public void setOtra(Boolean otra) {
+        this.otra = otra;
+    }
+
+    public Boolean getInicial() {
+        return inicial;
+    }
+
+    public void setInicial(Boolean inicial) {
+        this.inicial = inicial;
+    }
+
+    public Boolean getPrimario() {
+        return primario;
+    }
+
+    public void setPrimario(Boolean primario) {
+        this.primario = primario;
+    }
+
+    public Boolean getSecundario() {
+        return secundario;
+    }
+
+    public void setSecundario(Boolean secundario) {
+        this.secundario = secundario;
+    }
+
+    public Boolean getManana() {
+        return manana;
+    }
+
+    public void setManana(Boolean manana) {
+        this.manana = manana;
+    }
+
+    public Boolean getTarde() {
+        return tarde;
+    }
+
+    public void setTarde(Boolean tarde) {
+        this.tarde = tarde;
+    }
+
+    public Boolean getTanocherde() {
+        return tanocherde;
+    }
+
+    public void setTanocherde(Boolean tanocherde) {
+        this.tanocherde = tanocherde;
     }
 }
