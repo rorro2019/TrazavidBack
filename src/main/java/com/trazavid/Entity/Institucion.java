@@ -48,12 +48,12 @@ public class Institucion {
     @Column
     private Boolean tarde;
     @Column
-    private Boolean tanocherde;
+    private Boolean noche;
 
     public Institucion() {
     }
 
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Integer telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean tanocherde) {
+    public Institucion(String nombre, String direccion, String ciudad, String provincia, Integer telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
@@ -68,7 +68,7 @@ public class Institucion {
         this.secundario = secundario;
         this.manana = manana;
         this.tarde = tarde;
-        this.tanocherde = tanocherde;
+        this.noche = noche;
     }
 
     public Long getId_institucion() {
@@ -191,11 +191,11 @@ public class Institucion {
         this.tarde = tarde;
     }
 
-    public Boolean getTanocherde() {
-        return tanocherde;
+    public Boolean getNoche() {
+        return noche;
     }
 
-    public void setTanocherde(Boolean tanocherde) {
-        this.tanocherde = tanocherde;
+    public void setNoche(Boolean noche) {
+        this.noche = noche;
     }
 }
