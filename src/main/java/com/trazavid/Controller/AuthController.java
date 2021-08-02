@@ -2,6 +2,7 @@ package com.trazavid.Controller;
 
 import com.trazavid.Entity.ERole;
 //import com.trazavid.Entity.Person;
+import com.trazavid.Entity.Personal;
 import com.trazavid.Entity.Role;
 import com.trazavid.Entity.User;
 import com.trazavid.Repository.RoleRepository;
@@ -83,11 +84,11 @@ public class AuthController {
 		}
 
 		// Create new user's account
-        //Person person = new Person();
+        Personal person = new Personal();
 		User user = new User(signUpRequest.getUsername(),
 							 signUpRequest.getEmail(),
 							 encoder.encode(signUpRequest.getPassword()));
-        //user.setPerson(person);
+        user.setPersonal(person);
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 

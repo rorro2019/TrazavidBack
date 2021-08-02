@@ -49,6 +49,10 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id_personal")
+    private Personal personal;
+
     public User(String username, String email, String encode) {
         this.username = username;
         this.email = email;
@@ -88,7 +92,13 @@ public class User implements Serializable {
     }
 
 
+    public Personal getPersonal() {
+        return personal;
+    }
 
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
+    }
 
     public Set<Role> getRoles() {
         return roles;
@@ -98,3 +108,4 @@ public class User implements Serializable {
         this.roles = roles;
     }
 }
+

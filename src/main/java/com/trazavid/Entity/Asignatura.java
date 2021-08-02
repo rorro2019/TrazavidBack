@@ -18,4 +18,5 @@ public class Asignatura {
 
     @Column(length= 15)
     private Integer carga_horaria;
+
 }
