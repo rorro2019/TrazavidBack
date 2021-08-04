@@ -5,6 +5,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name ="Institucion")
@@ -50,6 +52,12 @@ public class Institucion {
     @Column
     private Boolean noche;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "institucion_salones",
+            joinColumns = @JoinColumn(name = "id_institucion"),
+            inverseJoinColumns = @JoinColumn(name = "id_salon"))
+    private Set<Salon> Salon = new HashSet<>();
+
     public Institucion() {
     }
 
@@ -69,6 +77,14 @@ public class Institucion {
         this.manana = manana;
         this.tarde = tarde;
         this.noche = noche;
+    }
+
+    public Set<Salon> getSalon() {
+        return Salon;
+    }
+
+    public void setSalon(Set<Salon> salon) {
+        Salon = salon;
     }
 
     public Long getId_institucion() {

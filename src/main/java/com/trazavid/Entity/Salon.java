@@ -13,5 +13,10 @@ public class Salon {
     private Integer capacidad;
 
     @Column(length= 40 )
+    private String descripcion;
+
+    @Column(length= 40 )
     private String nombre;
+
+
     }

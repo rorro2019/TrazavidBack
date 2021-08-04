@@ -1,6 +1,7 @@
 package com.trazavid.Service;
 
 import com.trazavid.Entity.Institucion;
+import com.trazavid.Entity.Salon;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -11,6 +12,7 @@ public interface InstitucionService {
     public Iterable<Institucion> findAll();
 
     public Page<Institucion> findAll(Pageable pageable);
+
 
     public Optional<Institucion> findById(Long id) ;
 
