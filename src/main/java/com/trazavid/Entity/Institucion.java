@@ -52,6 +52,17 @@ public class Institucion {
     @Column
     private Boolean noche;
 
+    @Column
+    private Long id_personal;
+
+    public Long getId_personal() {
+        return id_personal;
+    }
+
+    public void setId_personal(Long id_personal) {
+        this.id_personal = id_personal;
+    }
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "institucion_salones",
             joinColumns = @JoinColumn(name = "id_institucion"),
