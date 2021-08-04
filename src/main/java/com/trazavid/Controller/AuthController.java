@@ -1,7 +1,6 @@
 package com.trazavid.Controller;
 
 import com.trazavid.Entity.ERole;
-//import com.trazavid.Entity.Person;
 import com.trazavid.Entity.Personal;
 import com.trazavid.Entity.Role;
 import com.trazavid.Entity.User;
