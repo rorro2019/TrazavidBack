@@ -29,8 +29,6 @@ public class User implements Serializable {
     @Email
     private String email;
 
-    public User() {
-    }
 
     @NotBlank
     @Size(max = 120)
@@ -107,6 +105,8 @@ public class User implements Serializable {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+    public User() {
+    }
 
     public User(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email, @NotBlank @Size(max = 120) String password, Set<Role> roles, Personal personal) {
 
@@ -116,5 +116,7 @@ public class User implements Serializable {
         this.roles = roles;
         this.personal = personal;
     }
+
+
 }
 
