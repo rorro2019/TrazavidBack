@@ -14,6 +14,9 @@ public class Asignatura {
     private String objetivo;
 
     @Column(length= 40 )
+    private String nombre;
+
+    @Column(length= 40 )
     private String unidades;
 
     @Column(length= 15)
