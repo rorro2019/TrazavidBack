@@ -3,6 +3,7 @@ package com.trazavid.Controller;
 import com.trazavid.Entity.Institucion;
 import com.trazavid.Service.AlumnoService;
 import com.trazavid.Service.InstitucionService;
+import com.trazavid.Service.SalonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class InstitucionController {
     @Resource
     private InstitucionService institucionService;
+    @Resource
+    private SalonService salonService;
 
     //create a new line
     @PostMapping(value="/new")
