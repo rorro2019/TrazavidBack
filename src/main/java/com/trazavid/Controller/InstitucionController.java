@@ -1,6 +1,7 @@
 package com.trazavid.Controller;
 
 import com.trazavid.Entity.Institucion;
+import com.trazavid.Entity.Salon;
 import com.trazavid.Service.AlumnoService;
 import com.trazavid.Service.InstitucionService;
 import com.trazavid.Service.SalonService;
@@ -24,6 +25,13 @@ public class InstitucionController {
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody Institucion institucion){
+        Salon[] array= institucion.getSalon().toArray(new Salon[0]);
+        //recorremos hasta el limite del array
+        int i;
+        for (i=0; i<array.length; i++) {//inicia el bucle
+            salonService.save(array[i]);
+            System.out.println(array[i]);
+        }//cierra el bucle
         return ResponseEntity.status(HttpStatus.CREATED).body(institucionService.save(institucion));
     }
 
