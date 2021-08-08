@@ -49,6 +49,8 @@ public class Alumno {
     @Column(length= 15)
     private Long contactoTutor;
 
+
+
     public Alumno(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Long telefono, @NotBlank @Size(max = 50) @Email String email, String nombreTutor, Long contactoTutor) {
         this.nombre = nombre;
         this.apellido = apellido;
