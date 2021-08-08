@@ -37,7 +37,7 @@ public class Alumno {
     private String provincia;
 
     @Column(length= 15)
-    private Integer telefono;
+    private Long telefono;
 
     @NotBlank
     @Size(max = 50)
@@ -49,7 +49,7 @@ public class Alumno {
     @Column(length= 15)
     private Long contactoTutor;
 
-    public Alumno(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Integer telefono, @NotBlank @Size(max = 50) @Email String email, String nombreTutor, Long contactoTutor) {
+    public Alumno(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Long telefono, @NotBlank @Size(max = 50) @Email String email, String nombreTutor, Long contactoTutor) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
@@ -127,11 +127,11 @@ public class Alumno {
         this.provincia = provincia;
     }
 
-    public Integer getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 
