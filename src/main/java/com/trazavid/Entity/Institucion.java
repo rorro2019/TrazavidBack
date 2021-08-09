@@ -53,14 +53,14 @@ public class Institucion {
     private Boolean noche;
 
     @Column
-    private Long id_personal;
+    private Long idPersonal;
 
-    public Long getId_personal() {
-        return id_personal;
+    public Long getIdPersonal() {
+        return idPersonal;
     }
 
     public void setId_personal(Long id_personal) {
-        this.id_personal = id_personal;
+        this.idPersonal = id_personal;
     }
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -224,5 +224,25 @@ public class Institucion {
 
     public void setNoche(Boolean noche) {
         this.noche = noche;
+    }
+
+    public Institucion(String nombre, String direccion, String ciudad, String provincia, Integer telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche, Long idPersonal, Set<com.trazavid.Entity.Salon> salon) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+        this.telefono = telefono;
+        this.director = director;
+        this.comun = comun;
+        this.especial = especial;
+        this.otra = otra;
+        this.inicial = inicial;
+        this.primario = primario;
+        this.secundario = secundario;
+        this.manana = manana;
+        this.tarde = tarde;
+        this.noche = noche;
+        this.idPersonal = idPersonal;
+        Salon = salon;
     }
 }
