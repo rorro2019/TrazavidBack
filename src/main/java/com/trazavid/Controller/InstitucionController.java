@@ -50,6 +50,14 @@ public class InstitucionController {
         return ResponseEntity.ok(oInstitucion);
     }
 
+    @GetMapping("/personal/{id}")
+    public ResponseEntity<?> readInstitucion (@PathVariable(value = "id") Long institucionId){
+        Optional<Institucion> oInstitucion= institucionService.findByIdPersonal(institucionId);
+        if(!oInstitucion.isPresent()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(oInstitucion);
+    }
 
     // Delete an User
     @DeleteMapping("/{id}")

@@ -34,6 +34,12 @@ public class InstitucionServiceImpl implements InstitucionService{
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Optional<Institucion> findByIdPersonal(Long id) {
+        return institucionRepository.findByIdPersonal(id);
+    }
+
+    @Override
     @Transactional
     public Institucion save(Institucion docente) {
         return institucionRepository.save(docente);

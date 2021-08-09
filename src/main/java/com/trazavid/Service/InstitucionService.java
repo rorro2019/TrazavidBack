@@ -11,6 +11,8 @@ public interface InstitucionService {
 
     public Iterable<Institucion> findAll();
 
+    public Optional<Institucion> findByIdPersonal(Long id);
+
     public Page<Institucion> findAll(Pageable pageable);
 
 
