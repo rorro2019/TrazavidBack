@@ -28,7 +28,7 @@ public class Institucion {
     private String provincia;
 
     @Column(length= 15)
-    private Integer telefono;
+    private Long telefono;
 
     @Column(length= 15)
     private Integer director;
@@ -72,7 +72,7 @@ public class Institucion {
     public Institucion() {
     }
 
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Integer telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche) {
+    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
@@ -138,11 +138,11 @@ public class Institucion {
         this.provincia = provincia;
     }
 
-    public Integer getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 
@@ -226,7 +226,7 @@ public class Institucion {
         this.noche = noche;
     }
 
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Integer telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche, Long idPersonal, Set<com.trazavid.Entity.Salon> salon) {
+    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche, Long idPersonal, Set<com.trazavid.Entity.Salon> salon) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
