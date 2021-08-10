@@ -1,5 +1,6 @@
 package com.trazavid.Controller;
 
+import com.trazavid.Entity.Alumno;
 import com.trazavid.Entity.User;
 import com.trazavid.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
     }
 
+
+    @GetMapping(value = "/all")
+    public Iterable<User> getAll() {
+        return userService.findAll();
+
+    }
     //read an user
     @GetMapping("/{id}")
     public ResponseEntity<?> read (@PathVariable(value = "id") Long userId){
