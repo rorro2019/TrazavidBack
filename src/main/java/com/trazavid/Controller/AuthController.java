@@ -28,9 +28,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class AuthController {
 	@Autowired
     AuthenticationManager authenticationManager;
