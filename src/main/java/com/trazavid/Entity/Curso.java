@@ -15,7 +15,7 @@ public class Curso {
     private Integer division;
 
     @Column(name="subdivision")
-    private Integer subdivision;
+    private String subdivision;
 
     @Column(length= 40 )
     private String turno;
@@ -23,7 +23,7 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(Integer division, Integer subdivision, String turno) {
+    public Curso(Integer division, String subdivision, String turno) {
         this.division = division;
         this.subdivision = subdivision;
         this.turno = turno;
@@ -45,11 +45,11 @@ public class Curso {
         this.division = division;
     }
 
-    public Integer getSubdivision() {
+    public String getSubdivision() {
         return subdivision;
     }
 
-    public void setSubdivision(Integer subdivision) {
+    public void setSubdivision(String subdivision) {
         this.subdivision = subdivision;
     }
 
