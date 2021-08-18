@@ -17,6 +17,9 @@ public class Salon {
 
     @Column(length= 40 )
     private String nombre;
+    @ManyToOne
+    @JoinColumn(name = "id_institucion")
+    private Institucion institucion;
 
 
     public Salon(Integer capacidad, String descripcion, String nombre) {
@@ -58,5 +61,20 @@ public class Salon {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Institucion getInstitucion() {
+        return institucion;
+    }
+
+    public void setInstitucion(Institucion institucion) {
+        this.institucion = institucion;
+    }
+
+    public Salon(Integer capacidad, String descripcion, String nombre, Institucion institucion) {
+        this.capacidad = capacidad;
+        this.descripcion = descripcion;
+        this.nombre = nombre;
+        this.institucion = institucion;
     }
 }
