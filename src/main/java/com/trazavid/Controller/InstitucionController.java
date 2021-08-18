@@ -25,7 +25,7 @@ public class InstitucionController {
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody Institucion institucion){
-        Salon[] array= institucion.getSalon().toArray(new Salon[0]);
+        Salon[] array= institucion.getSalones().toArray(new Salon[0]);
         //recorremos hasta el limite del array
         int i;
         for (i=0; i<array.length; i++) {//inicia el bucle
