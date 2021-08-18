@@ -95,7 +95,7 @@ public class Institucion {
         return idPersonal;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinTable(	name = "institucion_salones",
             joinColumns = @JoinColumn(name = "id_institucion"),
             inverseJoinColumns = @JoinColumn(name = "id_salon"))
