@@ -5,7 +5,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -52,26 +54,6 @@ public class Institucion {
     @Column
     private Boolean noche;
 
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche, Integer aforo, Long idPersonal, Set<com.trazavid.Entity.Salon> salon) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.provincia = provincia;
-        this.telefono = telefono;
-        this.director = director;
-        this.comun = comun;
-        this.especial = especial;
-        this.otra = otra;
-        this.inicial = inicial;
-        this.primario = primario;
-        this.secundario = secundario;
-        this.manana = manana;
-        this.tarde = tarde;
-        this.noche = noche;
-        this.aforo = aforo;
-        this.idPersonal = idPersonal;
-        Salon = salon;
-    }
 
     @Column(length= 3)
     private Integer aforo;
@@ -95,17 +77,16 @@ public class Institucion {
         return idPersonal;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    /**@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "institucion_salones",
             joinColumns = @JoinColumn(name = "id_institucion"),
             inverseJoinColumns = @JoinColumn(name = "id_salon"))
-    private Set<Salon> Salon = new HashSet<>();
+    private Set<Salon> Salon = new HashSet<>();**/
 
+@OneToMany(mappedBy = "institucion",cascade=CascadeType.ALL, orphanRemoval = true)
+   private List<Salon> salone= new ArrayList<>();
 
-    public Institucion() {
-    }
-
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche) {
+    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche, Integer aforo, Long idPersonal, List<Salon> salone) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
@@ -121,14 +102,12 @@ public class Institucion {
         this.manana = manana;
         this.tarde = tarde;
         this.noche = noche;
+        this.aforo = aforo;
+        this.idPersonal = idPersonal;
+        this.salone = salone;
     }
 
-    public Set<Salon> getSalon() {
-        return Salon;
-    }
-
-    public void setSalon(Set<Salon> salon) {
-        Salon = salon;
+    public Institucion() {
     }
 
     public Long getId_institucion() {
@@ -259,23 +238,11 @@ public class Institucion {
         this.noche = noche;
     }
 
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche, Long idPersonal, Set<com.trazavid.Entity.Salon> salon) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.provincia = provincia;
-        this.telefono = telefono;
-        this.director = director;
-        this.comun = comun;
-        this.especial = especial;
-        this.otra = otra;
-        this.inicial = inicial;
-        this.primario = primario;
-        this.secundario = secundario;
-        this.manana = manana;
-        this.tarde = tarde;
-        this.noche = noche;
-        this.idPersonal = idPersonal;
-        Salon = salon;
+    public List<Salon> getSalone() {
+        return salone;
+    }
+
+    public void setSalone(List<Salon> salone) {
+        this.salone = salone;
     }
 }

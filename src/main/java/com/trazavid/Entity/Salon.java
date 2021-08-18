@@ -17,7 +17,10 @@ public class Salon {
 
     @Column(length= 40 )
     private String nombre;
-
+    
+@ManyToOne(fetch= FetchType.LAZY)
+@JoinColumn
+private Institucion institucion;
 
     public Salon(Integer capacidad, String descripcion, String nombre) {
         this.capacidad = capacidad;
