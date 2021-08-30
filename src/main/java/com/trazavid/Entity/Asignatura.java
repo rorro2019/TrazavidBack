@@ -16,6 +16,10 @@ public class Asignatura {
     @Column(length= 15)
     private Integer carga_horaria;
 
+    @ManyToOne
+    @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
+    private Institucion institucion;
+
     public Asignatura() {
     }
 
@@ -46,5 +50,19 @@ public class Asignatura {
 
     public void setCarga_horaria(Integer carga_horaria) {
         this.carga_horaria = carga_horaria;
+    }
+
+    public Institucion getInstitucion() {
+        return institucion;
+    }
+
+    public void setInstitucion(Institucion institucion) {
+        this.institucion = institucion;
+    }
+
+    public Asignatura(String nombre, Integer carga_horaria, Institucion institucion) {
+        this.nombre = nombre;
+        this.carga_horaria = carga_horaria;
+        this.institucion = institucion;
     }
 }

@@ -1,10 +1,7 @@
 package com.trazavid.Controller;
 
-import com.trazavid.Entity.Institucion;
-import com.trazavid.Entity.Salon;
-import com.trazavid.Service.AlumnoService;
-import com.trazavid.Service.InstitucionService;
-import com.trazavid.Service.SalonService;
+import com.trazavid.Entity.*;
+import com.trazavid.Service.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,17 +18,41 @@ public class InstitucionController {
     private InstitucionService institucionService;
     @Resource
     private SalonService salonService;
+    @Resource
+    private AlumnoService alumnoService;
+    @Resource
+    private DocenteService docenteService;
+    @Resource
+    private CursoService cursoService;
+
 
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody Institucion institucion){
         Salon[] array= institucion.getSalon().toArray(new Salon[0]);
-        //recorremos hasta el limite del array
         int i;
-        for (i=0; i<array.length; i++) {//inicia el bucle
+        for (i=0; i<array.length; i++) {
             salonService.save(array[i]);
             System.out.println(array[i]);
-        }//cierra el bucle
+        }
+        Alumno[] arrayAlumno= institucion.getAlumno().toArray(new Alumno[0]);
+        int j;
+        for (j=0; i<arrayAlumno.length; j++) {
+            alumnoService.save(arrayAlumno[j]);
+            System.out.println(arrayAlumno[j]);
+        }
+        Curso[] arrayCurso= institucion.getCurso().toArray(new Curso[0]);
+        int y;
+        for (y=0; i<array.length; y++) {
+            cursoService.save(arrayCurso[y]);
+            System.out.println(arrayCurso[y]);
+        }
+        Docente[] arrayDocente= institucion.getDocente().toArray(new Docente[0]);
+        int w;
+        for (w=0; i<array.length; w++) {
+            docenteService.save(arrayDocente[w]);
+            System.out.println(arrayDocente[w]);
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(institucionService.save(institucion));
     }
 

@@ -20,6 +20,25 @@ public class Curso {
     @Column(length= 40 )
     private String turno;
 
+    @ManyToOne
+    @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
+    private Institucion institucion;
+
+    public Institucion getInstitucion() {
+        return institucion;
+    }
+
+    public void setInstitucion(Institucion institucion) {
+        this.institucion = institucion;
+    }
+
+    public Curso(Integer division, String subdivision, String turno, Institucion institucion) {
+        this.division = division;
+        this.subdivision = subdivision;
+        this.turno = turno;
+        this.institucion = institucion;
+    }
+
     public Curso() {
     }
 

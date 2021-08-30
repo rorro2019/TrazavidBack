@@ -47,6 +47,10 @@ public class Docente {
     @Email
     private String email;
 
+    @ManyToOne
+    @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
+    private Institucion institucion;
+
     public Docente() {
     }
 
@@ -140,5 +144,26 @@ public class Docente {
         this.provincia = provincia;
         this.telefono = telefono;
         this.email = email;
+    }
+
+    public Docente(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Integer telefono, @NotBlank @Size(max = 50) @Email String email, Institucion institucion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.dni = dni;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+        this.telefono = telefono;
+        this.email = email;
+        this.institucion = institucion;
+    }
+
+    public Institucion getInstitucion() {
+        return institucion;
+    }
+
+    public void setInstitucion(Institucion institucion) {
+        this.institucion = institucion;
     }
 }
