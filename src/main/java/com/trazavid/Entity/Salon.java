@@ -1,6 +1,8 @@
 package com.trazavid.Entity;
 
 import javax.persistence.*;
+import java.sql.Date;
+
 @Entity
 @Table(name ="Salon")
 public class Salon {
@@ -21,6 +23,26 @@ public class Salon {
     @ManyToOne
     @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
     private Institucion institucion;
+
+    @Column(name = "fechabaja")
+    @Basic
+    private java.sql.Date fechabaja;
+
+    public Salon(Integer capacidad, String descripcion, String nombre, Institucion institucion, Date fechabaja) {
+        this.capacidad = capacidad;
+        this.descripcion = descripcion;
+        this.nombre = nombre;
+        this.institucion = institucion;
+        this.fechabaja = fechabaja;
+    }
+
+    public Date getFechabaja() {
+        return fechabaja;
+    }
+
+    public void setFechabaja(Date fechabaja) {
+        this.fechabaja = fechabaja;
+    }
 
     public Salon(Integer capacidad, String descripcion, String nombre) {
         this.capacidad = capacidad;

@@ -39,6 +39,10 @@ public class Alumno {
     @Column(length= 15)
     private Long telefono;
 
+    @Column(name = "fechabaja")
+    @Basic
+    private java.sql.Date fechabaja;
+
     @NotBlank
     @Size(max = 50)
     @Email
@@ -187,5 +191,29 @@ public class Alumno {
     }
 
     public Alumno() {
+    }
+
+    public Alumno(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Long telefono, Date fechabaja, @NotBlank @Size(max = 50) @Email String email, String nombreTutor, Long contactoTutor, Institucion institucion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.dni = dni;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+        this.telefono = telefono;
+        this.fechabaja = fechabaja;
+        this.email = email;
+        this.nombreTutor = nombreTutor;
+        this.contactoTutor = contactoTutor;
+        this.institucion = institucion;
+    }
+
+    public Date getFechabaja() {
+        return fechabaja;
+    }
+
+    public void setFechabaja(Date fechabaja) {
+        this.fechabaja = fechabaja;
     }
 }

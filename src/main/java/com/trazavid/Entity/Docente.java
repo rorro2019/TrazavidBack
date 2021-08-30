@@ -27,6 +27,10 @@ public class Docente {
     @Basic
     private java.sql.Date fechaNacimiento;
 
+    @Column(name = "fechabaja")
+    @Basic
+    private java.sql.Date fechabaja;
+
     @Column(name="dni")
     private Integer dni;
 
@@ -50,6 +54,32 @@ public class Docente {
     @ManyToOne
     @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
     private Institucion institucion;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_asignatura", nullable = false, updatable = false)
+    private Asignatura asignatura;
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public Docente(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Integer telefono, @NotBlank @Size(max = 50) @Email String email, Institucion institucion, Asignatura asignatura) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.dni = dni;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+        this.telefono = telefono;
+        this.email = email;
+        this.institucion = institucion;
+        this.asignatura = asignatura;
+    }
 
     public Docente() {
     }
@@ -165,5 +195,28 @@ public class Docente {
 
     public void setInstitucion(Institucion institucion) {
         this.institucion = institucion;
+    }
+
+    public Docente(String nombre, String apellido, Date fechaNacimiento, Date fechabaja, Integer dni, String direccion, String ciudad, String provincia, Integer telefono, @NotBlank @Size(max = 50) @Email String email, Institucion institucion, Asignatura asignatura) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.fechabaja = fechabaja;
+        this.dni = dni;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+        this.telefono = telefono;
+        this.email = email;
+        this.institucion = institucion;
+        this.asignatura = asignatura;
+    }
+
+    public Date getFechabaja() {
+        return fechabaja;
+    }
+
+    public void setFechabaja(Date fechabaja) {
+        this.fechabaja = fechabaja;
     }
 }

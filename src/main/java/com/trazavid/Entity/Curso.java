@@ -2,6 +2,9 @@ package com.trazavid.Entity;
 
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name ="Curso")
@@ -20,32 +23,32 @@ public class Curso {
     @Column(length= 40 )
     private String turno;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "FK_salon")
+    private Salon Salon;
+
     @ManyToOne
     @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
     private Institucion institucion;
 
-    public Institucion getInstitucion() {
-        return institucion;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "curso")
+    private Set<Asignatura> asignatura = new HashSet<>();
 
-    public void setInstitucion(Institucion institucion) {
-        this.institucion = institucion;
-    }
-
-    public Curso(Integer division, String subdivision, String turno, Institucion institucion) {
-        this.division = division;
-        this.subdivision = subdivision;
-        this.turno = turno;
-        this.institucion = institucion;
-    }
+    @Column(name = "fechabaja")
+    @Basic
+    private java.sql.Date fechabaja;
 
     public Curso() {
     }
 
-    public Curso(Integer division, String subdivision, String turno) {
+    public Curso(Integer division, String subdivision, String turno, com.trazavid.Entity.Salon salon, Institucion institucion, Set<Asignatura> asignatura, Date fechabaja) {
         this.division = division;
         this.subdivision = subdivision;
         this.turno = turno;
+        Salon = salon;
+        this.institucion = institucion;
+        this.asignatura = asignatura;
+        this.fechabaja = fechabaja;
     }
 
     public Long getId_curso() {
@@ -78,5 +81,37 @@ public class Curso {
 
     public void setTurno(String turno) {
         this.turno = turno;
+    }
+
+    public com.trazavid.Entity.Salon getSalon() {
+        return Salon;
+    }
+
+    public void setSalon(com.trazavid.Entity.Salon salon) {
+        Salon = salon;
+    }
+
+    public Institucion getInstitucion() {
+        return institucion;
+    }
+
+    public void setInstitucion(Institucion institucion) {
+        this.institucion = institucion;
+    }
+
+    public Set<Asignatura> getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Set<Asignatura> asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public Date getFechabaja() {
+        return fechabaja;
+    }
+
+    public void setFechabaja(Date fechabaja) {
+        this.fechabaja = fechabaja;
     }
 }
