@@ -19,7 +19,7 @@ public class Asignatura {
     @Column(length= 15)
     private Integer carga_horaria;
 
-    @ManyToOne
+  /**  @ManyToOne
     @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
     private Institucion institucion;
 
@@ -28,7 +28,7 @@ public class Asignatura {
 
     @ManyToOne
     @JoinColumn(name = "FK_curso", nullable = true, updatable = true)
-    private Curso curso;
+    private Curso curso;**/
 
     @Column(name = "fechabaja")
     @Basic
@@ -38,12 +38,12 @@ public class Asignatura {
     public Asignatura() {
     }
 
-    public Asignatura(String nombre, Integer carga_horaria, Institucion institucion, Set<com.trazavid.Entity.Docente> docente, Curso curso, Date fechabaja) {
+    public Asignatura(String nombre, Integer carga_horaria, Date fechabaja) {
         this.nombre = nombre;
         this.carga_horaria = carga_horaria;
-        this.institucion = institucion;
-        Docente = docente;
-        this.curso = curso;
+      //  this.institucion = institucion;
+       // Docente = docente;
+       // this.curso = curso;
         this.fechabaja = fechabaja;
     }
 
@@ -71,7 +71,7 @@ public class Asignatura {
         this.carga_horaria = carga_horaria;
     }
 
-    public Institucion getInstitucion() {
+   /** public Institucion getInstitucion() {
         return institucion;
     }
 
@@ -94,7 +94,7 @@ public class Asignatura {
     public void setCurso(Curso curso) {
         this.curso = curso;
     }
-
+**/
     public Date getFechabaja() {
         return fechabaja;
     }

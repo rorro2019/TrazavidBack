@@ -20,37 +20,19 @@ public class Salon {
     @Column(length= 40 )
     private String nombre;
 
-    @ManyToOne
-    @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
-    private Institucion institucion;
-
     @Column(name = "fechabaja")
     @Basic
     private java.sql.Date fechabaja;
 
-    public Salon(Integer capacidad, String descripcion, String nombre, Institucion institucion, Date fechabaja) {
-        this.capacidad = capacidad;
-        this.descripcion = descripcion;
-        this.nombre = nombre;
-        this.institucion = institucion;
-        this.fechabaja = fechabaja;
-    }
-
-    public Date getFechabaja() {
-        return fechabaja;
-    }
-
-    public void setFechabaja(Date fechabaja) {
-        this.fechabaja = fechabaja;
-    }
-
-    public Salon(Integer capacidad, String descripcion, String nombre) {
-        this.capacidad = capacidad;
-        this.descripcion = descripcion;
-        this.nombre = nombre;
-    }
 
     public Salon() {
+    }
+
+    public Salon(Integer capacidad, String descripcion, String nombre, java.sql.Date fechabaja) {
+        this.capacidad = capacidad;
+        this.descripcion = descripcion;
+        this.nombre = nombre;
+        this.fechabaja = fechabaja;
     }
 
     public Long getId_salon() {
@@ -85,18 +67,11 @@ public class Salon {
         this.nombre = nombre;
     }
 
-    public Salon(Integer capacidad, String descripcion, String nombre, Institucion institucion) {
-        this.capacidad = capacidad;
-        this.descripcion = descripcion;
-        this.nombre = nombre;
-        this.institucion = institucion;
+    public java.sql.Date getFechabaja() {
+        return fechabaja;
     }
 
-    public Institucion getInstitucion() {
-        return institucion;
-    }
-
-    public void setInstitucion(Institucion institucion) {
-        this.institucion = institucion;
+    public void setFechabaja(java.sql.Date fechabaja) {
+        this.fechabaja = fechabaja;
     }
 }

@@ -95,25 +95,41 @@ public class Institucion {
         return idPersonal;
     }
 
-   /** @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "institucion_salones",
             joinColumns = @JoinColumn(name = "id_institucion"),
             inverseJoinColumns = @JoinColumn(name = "id_salon"))
-    private Set<Salon> Salon = new HashSet<>();**/
+    private Set<Salon> Salon = new HashSet<>();
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
-   private Set<Salon> Salon = new HashSet<>();
+ //  @OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+ //  private Set<Salon> Salon = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+ //   @OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+ @ManyToMany(fetch = FetchType.LAZY)
+ @JoinTable(	name = "institucion_cursos",
+         joinColumns = @JoinColumn(name = "id_institucion"),
+         inverseJoinColumns = @JoinColumn(name = "id_curso"))
     private Set<Curso> Curso = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+  //  @OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+  @ManyToMany(fetch = FetchType.LAZY)
+  @JoinTable(	name = "institucion_alumnoss",
+          joinColumns = @JoinColumn(name = "id_institucion"),
+          inverseJoinColumns = @JoinColumn(name = "id_alumno"))
     private Set<Alumno> Alumno = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "institucion_docentes",
+            joinColumns = @JoinColumn(name = "id_institucion"),
+            inverseJoinColumns = @JoinColumn(name = "id_docente"))
     private Set<Docente> Docente = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "institucion_asignaturas",
+            joinColumns = @JoinColumn(name = "id_institucion"),
+            inverseJoinColumns = @JoinColumn(name = "id_asignatura"))
     private Set<Asignatura> Asignatura = new HashSet<>();
 
 

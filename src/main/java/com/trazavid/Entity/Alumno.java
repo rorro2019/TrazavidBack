@@ -53,7 +53,7 @@ public class Alumno {
     @Column(length= 15)
     private Long contactoTutor;
 
-    @ManyToOne
+   /** @ManyToOne
     @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
     private Institucion institucion;
 
@@ -64,22 +64,7 @@ public class Alumno {
     public void setInstitucion(Institucion institucion) {
         this.institucion = institucion;
     }
-
-    public Alumno(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Long telefono, @NotBlank @Size(max = 50) @Email String email, String nombreTutor, Long contactoTutor, Institucion institucion) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.dni = dni;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.provincia = provincia;
-        this.telefono = telefono;
-        this.email = email;
-        this.nombreTutor = nombreTutor;
-        this.contactoTutor = contactoTutor;
-        this.institucion = institucion;
-    }
-
+**/
     public Alumno(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Long telefono, @NotBlank @Size(max = 50) @Email String email, String nombreTutor, Long contactoTutor) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -92,6 +77,7 @@ public class Alumno {
         this.email = email;
         this.nombreTutor = nombreTutor;
         this.contactoTutor = contactoTutor;
+
     }
 
     public Long getId_alumno() {
@@ -193,21 +179,7 @@ public class Alumno {
     public Alumno() {
     }
 
-    public Alumno(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Long telefono, Date fechabaja, @NotBlank @Size(max = 50) @Email String email, String nombreTutor, Long contactoTutor, Institucion institucion) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.dni = dni;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.provincia = provincia;
-        this.telefono = telefono;
-        this.fechabaja = fechabaja;
-        this.email = email;
-        this.nombreTutor = nombreTutor;
-        this.contactoTutor = contactoTutor;
-        this.institucion = institucion;
-    }
+
 
     public Date getFechabaja() {
         return fechabaja;

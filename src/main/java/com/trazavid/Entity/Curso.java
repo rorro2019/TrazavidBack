@@ -27,12 +27,12 @@ public class Curso {
     @JoinColumn(name = "FK_salon")
     private Salon Salon;
 
-    @ManyToOne
+   /** @ManyToOne
     @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
     private Institucion institucion;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "curso")
-    private Set<Asignatura> asignatura = new HashSet<>();
+    private Set<Asignatura> asignatura = new HashSet<>();**/
 
     @Column(name = "fechabaja")
     @Basic
@@ -41,13 +41,11 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(Integer division, String subdivision, String turno, com.trazavid.Entity.Salon salon, Institucion institucion, Set<Asignatura> asignatura, Date fechabaja) {
+    public Curso(Integer division, String subdivision, String turno, Date fechabaja) {
         this.division = division;
         this.subdivision = subdivision;
         this.turno = turno;
-        Salon = salon;
-        this.institucion = institucion;
-        this.asignatura = asignatura;
+
         this.fechabaja = fechabaja;
     }
 
@@ -91,21 +89,6 @@ public class Curso {
         Salon = salon;
     }
 
-    public Institucion getInstitucion() {
-        return institucion;
-    }
-
-    public void setInstitucion(Institucion institucion) {
-        this.institucion = institucion;
-    }
-
-    public Set<Asignatura> getAsignatura() {
-        return asignatura;
-    }
-
-    public void setAsignatura(Set<Asignatura> asignatura) {
-        this.asignatura = asignatura;
-    }
 
     public Date getFechabaja() {
         return fechabaja;
