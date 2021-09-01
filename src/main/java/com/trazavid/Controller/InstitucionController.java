@@ -45,8 +45,7 @@ public class InstitucionController {
         int y;
         for (y=0; i<array.length; y++) {
 
-            Optional<Salon> salon =  salonService.findById(arrayCurso[y].getSalon().getId_salon()) ;
-            arrayCurso[y].setSalon(salonService.save(salon.get()));
+            arrayCurso[y].setSalon(salonService.save(arrayCurso[y].getSalon()));
             cursoService.save(arrayCurso[y]);
             System.out.println(arrayCurso[y]);
         }
