@@ -37,13 +37,13 @@ public class InstitucionController {
         }
         Alumno[] arrayAlumno= institucion.getAlumno().toArray(new Alumno[0]);
         int j;
-        for (j=0; i<arrayAlumno.length; j++) {
+        for (j=0; j<arrayAlumno.length; j++) {
             alumnoService.save(arrayAlumno[j]);
             System.out.println(arrayAlumno[j]);
         }
         Curso[] arrayCurso= institucion.getCurso().toArray(new Curso[0]);
         int y;
-        for (y=0; i<arrayCurso.length; y++) {
+        for (y=0; y<arrayCurso.length; y++) {
 
             arrayCurso[y].setSalon(salonService.save(arrayCurso[y].getSalon()));
             cursoService.save(arrayCurso[y]);
@@ -51,7 +51,7 @@ public class InstitucionController {
         }
         Docente[] arrayDocente= institucion.getDocente().toArray(new Docente[0]);
         int w;
-        for (w=0; i<array.length; w++) {
+        for (w=0; w<arrayDocente.length; w++) {
             docenteService.save(arrayDocente[w]);
             System.out.println(arrayDocente[w]);
         }
