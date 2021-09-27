@@ -65,6 +65,18 @@ public class Alumno {
         this.institucion = institucion;
     }
 **/
+
+   @Column(name="id_institucion")
+   private Long id_institucion;
+
+    public Long getId_institucion() {
+        return id_institucion;
+    }
+
+    public void setId_institucion(Long id_institucion) {
+        this.id_institucion = id_institucion;
+    }
+
     public Alumno(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Long telefono, @NotBlank @Size(max = 50) @Email String email, String nombreTutor, Long contactoTutor) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -187,5 +199,21 @@ public class Alumno {
 
     public void setFechabaja(Date fechabaja) {
         this.fechabaja = fechabaja;
+    }
+
+    public Alumno(String nombre, String apellido, Date fechaNacimiento, Integer dni, String direccion, String ciudad, String provincia, Long telefono, Date fechabaja, @NotBlank @Size(max = 50) @Email String email, String nombreTutor, Long contactoTutor, Long id_institucion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.dni = dni;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+        this.telefono = telefono;
+        this.fechabaja = fechabaja;
+        this.email = email;
+        this.nombreTutor = nombreTutor;
+        this.contactoTutor = contactoTutor;
+        this.id_institucion = id_institucion;
     }
 }

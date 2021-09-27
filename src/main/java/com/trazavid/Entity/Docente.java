@@ -51,6 +51,17 @@ public class Docente {
     @Email
     private String email;
 
+    @Column(name="id_institucion")
+    private Long id_institucion;
+
+    public Long getId_institucion() {
+        return id_institucion;
+    }
+
+    public void setId_institucion(Long id_institucion) {
+        this.id_institucion = id_institucion;
+    }
+
   /**  @ManyToOne
     @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
     private Institucion institucion;
@@ -187,4 +198,17 @@ public class Docente {
         this.email = email;
     }
 
+    public Docente(String nombre, String apellido, Date fechaNacimiento, Date fechabaja, Integer dni, String direccion, String ciudad, String provincia, Integer telefono, @NotBlank @Size(max = 50) @Email String email, Long id_institucion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.fechabaja = fechabaja;
+        this.dni = dni;
+        this.direccion = direccion;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+        this.telefono = telefono;
+        this.email = email;
+        this.id_institucion = id_institucion;
+    }
 }

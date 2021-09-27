@@ -38,6 +38,17 @@ public class Curso {
     @Basic
     private java.sql.Date fechabaja;
 
+    @Column(name="id_institucion")
+    private Long id_institucion;
+
+    public Long getId_institucion() {
+        return id_institucion;
+    }
+
+    public void setId_institucion(Long id_institucion) {
+        this.id_institucion = id_institucion;
+    }
+
     public Curso() {
     }
 
@@ -96,5 +107,14 @@ public class Curso {
 
     public void setFechabaja(Date fechabaja) {
         this.fechabaja = fechabaja;
+    }
+
+    public Curso(Integer division, String subdivision, String turno, com.trazavid.Entity.Salon salon, Date fechabaja, Long id_institucion) {
+        this.division = division;
+        this.subdivision = subdivision;
+        this.turno = turno;
+        Salon = salon;
+        this.fechabaja = fechabaja;
+        this.id_institucion = id_institucion;
     }
 }

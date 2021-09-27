@@ -20,6 +20,7 @@ public interface InstitucionService {
 
     public Institucion save(Institucion user);
 
+
     public void deleteById(Long id) ;
 
 }

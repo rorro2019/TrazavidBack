@@ -34,6 +34,16 @@ public class Asignatura {
     @Basic
     private java.sql.Date fechabaja;
 
+    @Column(name="id_institucion")
+    private Long id_institucion;
+
+    public Long getId_institucion() {
+        return id_institucion;
+    }
+
+    public void setId_institucion(Long id_institucion) {
+        this.id_institucion = id_institucion;
+    }
 
     public Asignatura() {
     }
@@ -101,5 +111,12 @@ public class Asignatura {
 
     public void setFechabaja(Date fechabaja) {
         this.fechabaja = fechabaja;
+    }
+
+    public Asignatura(String nombre, Integer carga_horaria, Date fechabaja, Long id_institucion) {
+        this.nombre = nombre;
+        this.carga_horaria = carga_horaria;
+        this.fechabaja = fechabaja;
+        this.id_institucion = id_institucion;
     }
 }

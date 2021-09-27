@@ -24,7 +24,16 @@ public class Salon {
     @Basic
     private java.sql.Date fechabaja;
 
+    @Column(name="id_institucion")
+    private Long id_institucion;
 
+    public Long getId_institucion() {
+        return id_institucion;
+    }
+
+    public void setId_institucion(Long id_institucion) {
+        this.id_institucion = id_institucion;
+    }
     public Salon() {
     }
 
@@ -33,6 +42,14 @@ public class Salon {
         this.descripcion = descripcion;
         this.nombre = nombre;
         this.fechabaja = fechabaja;
+    }
+
+    public Salon(Integer capacidad, String descripcion, String nombre, Date fechabaja, Long id_institucion) {
+        this.capacidad = capacidad;
+        this.descripcion = descripcion;
+        this.nombre = nombre;
+        this.fechabaja = fechabaja;
+        this.id_institucion = id_institucion;
     }
 
     public Long getId_salon() {
