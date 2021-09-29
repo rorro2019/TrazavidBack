@@ -44,6 +44,11 @@ public class RoleController {
         }
     }
 
+    @GetMapping(value = "/all")
+    public Iterable<Role> getAll() {
+        return roleService.findAll();
+
+    }
 
 
 

@@ -18,12 +18,12 @@ public class RoleServiceImpl implements RoleService {
     private RoleRepository roleRepository;
     @Override
     public Iterable<Role> findAll() {
-        return null;
+        return roleRepository.findAll();
     }
 
     @Override
     public Page<Role> findAll(Pageable pageable) {
-        return null;
+        return roleRepository.findAll(pageable);
     }
 
     @Override
