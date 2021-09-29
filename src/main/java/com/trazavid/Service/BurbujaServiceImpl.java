@@ -1,8 +1,10 @@
 package com.trazavid.Service;
 
 import com.trazavid.Entity.Alumno;
+import com.trazavid.Entity.Burbuja;
+import com.trazavid.Entity.Docente;
 import com.trazavid.Repository.AlumnoRepository;
-import com.trazavid.Repository.UserRepository;
+import com.trazavid.Repository.BurbujaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,22 +13,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
-public class AlumnoServiceImpl implements AlumnoService{
+public class BurbujaServiceImpl implements BurbujaService{
+
     @Autowired
-    private AlumnoRepository alumnoRepository;
+    private BurbujaRepository burbujaRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Alumno> findAll() {
-        return alumnoRepository.findAll();
+    public Iterable<Burbuja> findAll() {
+        return burbujaRepository.findAll();
     }
 
     @Override
-    public List<Alumno> findById_institucion(Long id_institucion) {
-        return alumnoRepository.findById_institucion(id_institucion);
+    public List<Burbuja> findById_institucion(Long id_institucion) {
+        return burbujaRepository.findById_institucion(id_institucion);
     }
 
     /** @Override
@@ -38,25 +40,25 @@ public class AlumnoServiceImpl implements AlumnoService{
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Alumno> findAll(Pageable pageable) {
-        return alumnoRepository.findAll(pageable);
+    public Page<Burbuja> findAll(Pageable pageable) {
+        return burbujaRepository.findAll(pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Alumno> findById(Long id) {
-        return alumnoRepository.findById(id);
+    public Optional<Burbuja> findById(Long id) {
+        return burbujaRepository.findById(id);
     }
 
     @Override
     @Transactional
-    public Alumno save(Alumno alumno) {
-        return alumnoRepository.save(alumno);
+    public Burbuja save(Burbuja alumno) {
+        return burbujaRepository.save(alumno);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        alumnoRepository.deleteById(id);
+        burbujaRepository.deleteById(id);
     }
 }

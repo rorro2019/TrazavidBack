@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 public class CursoServiceImpl implements CursoService {
@@ -16,6 +17,11 @@ public class CursoServiceImpl implements CursoService {
     @Override
     public Iterable<Curso> findAll() {
         return cursoRepository.findAll();
+    }
+
+    @Override
+    public List<Curso> findById_institucion(Long id_institucion) {
+        return cursoRepository.findById_institucion(id_institucion);
     }
 
     @Override

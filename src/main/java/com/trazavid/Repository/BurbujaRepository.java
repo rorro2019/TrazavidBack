@@ -1,6 +1,6 @@
 package com.trazavid.Repository;
 
-import com.trazavid.Entity.Salon;
+import com.trazavid.Entity.Burbuja;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -9,8 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SalonRepository extends JpaRepository<Salon, Long>, JpaSpecificationExecutor<Salon> {
-    @Query(nativeQuery = true,value = " select  * from Salon where id_institucion = ? ")
-    List<Salon> findById_institucion(Long id_institucion);
-
+public interface BurbujaRepository extends JpaRepository<Burbuja, Long> , JpaSpecificationExecutor<Burbuja> {
+    @Query(nativeQuery = true,value = " select  * from Burbuja where id_institucion = ? ")
+    List<Burbuja> findById_institucion(Long id_institucion);
 }

@@ -1,5 +1,6 @@
 package com.trazavid.Service;
 
+import com.trazavid.Entity.Alumno;
 import com.trazavid.Entity.Docente;
 import com.trazavid.Repository.DocenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,6 +35,10 @@ public class DocenteServiceImpl implements DocenteService {
         return docenteRepository.findById(id);
     }
 
+    @Override
+    public List<Docente> findById_institucion(Long id_institucion) {
+        return docenteRepository.findById_institucion(id_institucion);
+    }
     @Override
     @Transactional
     public Docente save(Docente docente) {

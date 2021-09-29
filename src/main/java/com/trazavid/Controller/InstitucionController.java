@@ -25,7 +25,8 @@ public class InstitucionController {
     private DocenteService docenteService;
     @Resource
     private CursoService cursoService;
-
+    @Resource
+    private BurbujaService burbujaService;
 
     //create a new line
     @PostMapping(value="/new")
@@ -82,6 +83,32 @@ public class InstitucionController {
         }
         return ResponseEntity.ok(oInstitucion);
     }
+
+    @GetMapping("/alumnos/{id}")
+    public Iterable<Alumno> readAlumnos (@PathVariable(value = "id") Long institucionId){
+       return alumnoService.findById_institucion(institucionId);
+    }
+
+    @GetMapping("/docentes/{id}")
+    public Iterable<Docente> readDocentes (@PathVariable(value = "id") Long institucionId){
+        return docenteService.findById_institucion(institucionId);
+    }
+
+    @GetMapping("/cursos/{id}")
+    public Iterable<Curso> readCursos (@PathVariable(value = "id") Long institucionId){
+        return cursoService.findById_institucion(institucionId);
+    }
+
+    @GetMapping("/salones/{id}")
+    public Iterable<Salon> readSalones (@PathVariable(value = "id") Long institucionId){
+        return salonService.findById_institucion(institucionId);
+    }
+
+    @GetMapping("/burbujas/{id}")
+    public Iterable<Burbuja> readBurbujas (@PathVariable(value = "id") Long institucionId){
+        return burbujaService.findById_institucion(institucionId);
+    }
+
 
     // Delete an User
     @DeleteMapping("/{id}")
