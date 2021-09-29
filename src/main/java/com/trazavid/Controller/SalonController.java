@@ -40,8 +40,6 @@ public class SalonController {
 
             return ResponseEntity.status(HttpStatus.CREATED).body(institucionService.save(institucion.get()));
         }
-
-
     }
 
     @PostMapping(value="/list")
@@ -59,6 +57,20 @@ public class SalonController {
         }
         institucion.get().setSalon(listaOriginal) ;
         return ResponseEntity.status(HttpStatus.CREATED).body(institucionService.save(institucion.get()));
+    }
+
+    @PostMapping(value="/editlist")
+    public ResponseEntity<?> editlist (@Valid @RequestBody Set<Salon> arraySalon){
+
+        int j;
+        List<Salon> list = new ArrayList<Salon>(arraySalon);
+
+        Optional<Institucion> institucion= institucionService.findById(list.get(0).getId_institucion());
+
+        for (j=0; j<list.size(); j++) {
+            salonService.save(list.get(j));
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(institucionService.findById(list.get(0).getId_institucion()));
     }
 
     @GetMapping(value = "/all")
