@@ -28,14 +28,14 @@ public class Burbuja {
     @JoinTable(	name = "alumno_alumnoss",
             joinColumns = @JoinColumn(name = "id_burbuja"),
             inverseJoinColumns = @JoinColumn(name = "id_alumno"))
-    private Set<Alumno> Alumno = new HashSet<>();
+    private Set<Alumno> Alumnos = new HashSet<>();
 
     //@OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "burbuja_docentes",
             joinColumns = @JoinColumn(name = "id_institucion"),
             inverseJoinColumns = @JoinColumn(name = "id_docente"))
-    private Set<Docente> Docente = new HashSet<>();
+    private Set<Docente> Docentes = new HashSet<>();
 
     public Burbuja() {
     }
@@ -60,21 +60,6 @@ public class Burbuja {
         this.fechabaja = fechabaja;
     }
 
-    public Set<com.trazavid.Entity.Alumno> getAlumno() {
-        return Alumno;
-    }
-
-    public void setAlumno(Set<com.trazavid.Entity.Alumno> alumno) {
-        Alumno = alumno;
-    }
-
-    public Set<com.trazavid.Entity.Docente> getDocente() {
-        return Docente;
-    }
-
-    public void setDocente(Set<com.trazavid.Entity.Docente> docente) {
-        Docente = docente;
-    }
 
     public String getNombre() {
         return nombre;
@@ -92,12 +77,27 @@ public class Burbuja {
         this.id_institucion = id_institucion;
     }
 
-    public Burbuja(String nombre, Date fechabaja, Long id_institucion, Set<com.trazavid.Entity.Alumno> alumno, Set<com.trazavid.Entity.Docente> docente) {
+    public Burbuja(String nombre, Date fechabaja, Long id_institucion, Set<Alumno> alumnos, Set<Docente> docentes) {
         this.nombre = nombre;
         this.fechabaja = fechabaja;
         this.id_institucion = id_institucion;
-        Alumno = alumno;
-        Docente = docente;
+        Alumnos = alumnos;
+        Docentes = docentes;
     }
 
+    public Set<Alumno> getAlumnos() {
+        return Alumnos;
+    }
+
+    public void setAlumnos(Set<Alumno> alumnos) {
+        Alumnos = alumnos;
+    }
+
+    public Set<Docente> getDocentes() {
+        return Docentes;
+    }
+
+    public void setDocentes(Set<Docente> docentes) {
+        Docentes = docentes;
+    }
 }
