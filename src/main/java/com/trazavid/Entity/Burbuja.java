@@ -37,6 +37,11 @@ public class Burbuja {
             inverseJoinColumns = @JoinColumn(name = "id_docente"))
     private Set<Docente> Docentes = new HashSet<>();
 
+
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id_curso")
+    private Curso curso;
+
     public Burbuja() {
     }
 
@@ -99,5 +104,22 @@ public class Burbuja {
 
     public void setDocentes(Set<Docente> docentes) {
         Docentes = docentes;
+    }
+
+    public Burbuja(String nombre, Date fechabaja, Long id_institucion, Set<Alumno> alumnos, Set<Docente> docentes, Curso curso) {
+        this.nombre = nombre;
+        this.fechabaja = fechabaja;
+        this.id_institucion = id_institucion;
+        Alumnos = alumnos;
+        Docentes = docentes;
+        this.curso = curso;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 }
