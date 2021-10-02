@@ -27,7 +27,22 @@ public class Curso {
     @JoinColumn(name = "FK_salon")
     private Salon Salon;
 
-   /** @ManyToOne
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "curso_docentes",
+            joinColumns = @JoinColumn(name = "id_curso"),
+            inverseJoinColumns = @JoinColumn(name = "id_docente"))
+    private Set<Docente> Docente = new HashSet<>();
+
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "curso_docentes",
+            joinColumns = @JoinColumn(name = "id_curso"),
+            inverseJoinColumns = @JoinColumn(name = "id_alumno"))
+    private Set<Alumno> alumno = new HashSet<>();
+
+
+    /** @ManyToOne
     @JoinColumn(name = "FK_institucion", nullable = false, updatable = false)
     private Institucion institucion;
 
@@ -116,5 +131,42 @@ public class Curso {
         Salon = salon;
         this.fechabaja = fechabaja;
         this.id_institucion = id_institucion;
+    }
+
+    public Curso(Integer division, String subdivision, String turno, com.trazavid.Entity.Salon salon, Set<com.trazavid.Entity.Docente> docente, Date fechabaja, Long id_institucion) {
+        this.division = division;
+        this.subdivision = subdivision;
+        this.turno = turno;
+        Salon = salon;
+        Docente = docente;
+        this.fechabaja = fechabaja;
+        this.id_institucion = id_institucion;
+    }
+
+    public Set<com.trazavid.Entity.Docente> getDocente() {
+        return Docente;
+    }
+
+    public void setDocente(Set<com.trazavid.Entity.Docente> docente) {
+        Docente = docente;
+    }
+
+    public Curso(Integer division, String subdivision, String turno, com.trazavid.Entity.Salon salon, Set<com.trazavid.Entity.Docente> docente, Set<Alumno> alumno, Date fechabaja, Long id_institucion) {
+        this.division = division;
+        this.subdivision = subdivision;
+        this.turno = turno;
+        Salon = salon;
+        Docente = docente;
+        this.alumno = alumno;
+        this.fechabaja = fechabaja;
+        this.id_institucion = id_institucion;
+    }
+
+    public Set<Alumno> getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Set<Alumno> alumno) {
+        this.alumno = alumno;
     }
 }
