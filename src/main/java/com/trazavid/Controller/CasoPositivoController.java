@@ -53,7 +53,9 @@ public class CasoPositivoController {
                            String destinatario = alumnosList.get(z).getEmail(); //A quien le quieres escribir.
                            String asunto = "Caso Positivo Covid";
                            String cuerpo = "Estimado " + alumnosList.get(z).getApellido() +" "+
-                                   alumnosList.get(z).getNombre()   +", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja. Siga las siguientes instrucciones para prevenir contagios";
+                                   alumnosList.get(z).getNombre()   +", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
+                                   "" +
+                                   "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
                            enviarConGMail(destinatario, asunto, cuerpo);
                        }
                        List<Docente>  docentessList = new ArrayList<>(burbuja.get().getDocentes());
@@ -62,7 +64,9 @@ public class CasoPositivoController {
                            String destinatario = docentessList.get(k).getEmail(); //A quien le quieres escribir.
                            String asunto = "Caso Positivo Covid";
                            String cuerpo = "Estimado " + docentessList.get(z).getApellido() +" "+
-                                   docentessList.get(z).getNombre()   +", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja. Siga las siguientes instrucciones para prevenir contagios";
+                                   docentessList.get(z).getNombre()   + ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
+                           "" +
+                                   "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
                            enviarConGMail(destinatario, asunto, cuerpo);
                        }
                     }
@@ -86,7 +90,9 @@ public class CasoPositivoController {
                             String destinatario = alumnosList.get(z).getEmail(); //A quien le quieres escribir.
                             String asunto = "Caso Positivo Covid";
                             String cuerpo = "Estimado " + alumnosList.get(z).getApellido() +" "+
-                                    alumnosList.get(z).getNombre()   +", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja. Siga las siguientes instrucciones para prevenir contagios";
+                                    alumnosList.get(z).getNombre()   + ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
+                                    "" +
+                                    "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
                             enviarConGMail(destinatario, asunto, cuerpo);
                         }
                         List<Docente>  docentessList = new ArrayList<>(burbuja.get().getDocentes());
@@ -95,7 +101,9 @@ public class CasoPositivoController {
                             String destinatario = docentessList.get(k).getEmail(); //A quien le quieres escribir.
                             String asunto = "Caso Positivo Covid";
                             String cuerpo = "Estimado " + docentessList.get(z).getApellido() +" "+
-                                    docentessList.get(z).getNombre()   +", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja. Siga las siguientes instrucciones para prevenir contagios";
+                                    docentessList.get(z).getNombre()   +  ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
+                                    "" +
+                                    "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
                             enviarConGMail(destinatario, asunto, cuerpo);
                         }
                     }
