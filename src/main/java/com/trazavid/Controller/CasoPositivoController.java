@@ -29,6 +29,10 @@ public class CasoPositivoController {
     @Resource
     private InstitucionService institucionService;
     @Resource
+    private AlumnoService alumnoService;
+    @Resource
+    private DocenteService docenteService;
+    @Resource
     private BurbujaService burbujaService;
     @Resource
     private CasoPositivoService casoPositivoService;
@@ -37,6 +41,7 @@ public class CasoPositivoController {
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody CasoPositivo casoPositivo){
         if (!casoPositivo.getAlumno().equals(null)){
+            alumnoService.save(casoPositivo.getAlumno()) ;
             Long id = casoPositivo.getAlumno().getId_institucion() ;
             List<Burbuja> burbujas= burbujaService.findById_institucion(id);
             int j;
@@ -46,6 +51,7 @@ public class CasoPositivoController {
                 int i;
                 for (i=0; i < alumnos.size(); i++) {
                    if( alumnos.get(i).getId_alumno()== casoPositivo.getAlumno().getId_alumno() ){
+
                        Optional<Burbuja> burbuja= burbujaService.findById(burbujas.get(j).getId_burbuja());
                        List<Alumno>  alumnosList = new ArrayList<>(burbuja.get().getAlumnos());
                        int z;
@@ -72,8 +78,10 @@ public class CasoPositivoController {
                     }
                 }
             }
+            return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
         } ;
         if (!casoPositivo.getDocente().equals(null)){
+            docenteService.save(casoPositivo.getDocente());
             Long id = casoPositivo.getDocente().getId_institucion() ;
             List<Burbuja> burbujas= burbujaService.findById_institucion(id);
             int j;
@@ -83,6 +91,7 @@ public class CasoPositivoController {
                 int i;
                 for (i=0; i < docentes.size(); i++) {
                     if( docentes.get(i).getId_docente() == casoPositivo.getDocente().getId_docente() ){
+
                         Optional<Burbuja> burbuja= burbujaService.findById(burbujas.get(j).getId_burbuja());
                         List<Alumno>  alumnosList = new ArrayList<>(burbuja.get().getAlumnos());
                         int z;
@@ -109,9 +118,11 @@ public class CasoPositivoController {
                     }
                 }
             }
+            return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
         } ;
 
         return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
+
     }
 
 

@@ -15,13 +15,13 @@ public class CasoPositivo {
     private java.sql.Date fechaDeteccion;
 
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "id_docente")
+    @OneToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(referencedColumnName  = "id_docente")
     private Docente docente;
 
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "id_alumno")
+    @OneToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(referencedColumnName  = "id_alumno")
     private Alumno alumno;
 
     @Column(name = "fechaAlta")
@@ -77,4 +77,5 @@ public class CasoPositivo {
     public void setFechaAlta(Date fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
+
 }
