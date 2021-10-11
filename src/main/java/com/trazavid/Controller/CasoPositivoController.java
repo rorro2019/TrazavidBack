@@ -103,7 +103,7 @@ public class CasoPositivoController {
                             String cuerpo = "Estimado " + docentessList.get(z).getApellido() +" "+
                                     docentessList.get(z).getNombre()   +  ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
                                     "" +
-                                    "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";git add .
+                                    "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
                             enviarConGMail(destinatario, asunto, cuerpo);
                         }
                     }
