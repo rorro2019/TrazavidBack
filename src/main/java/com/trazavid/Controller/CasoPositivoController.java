@@ -40,8 +40,8 @@ public class CasoPositivoController {
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody CasoPositivo casoPositivo){
-        if (!casoPositivo.getAlumno().equals(null)){
-            alumnoService.save(casoPositivo.getAlumno()) ;
+      /**  if (!casoPositivo.getAlumno().equals(null)){
+          alumnoService.save(casoPositivo.getAlumno()) ;
             Long id = casoPositivo.getAlumno().getId_institucion() ;
             List<Burbuja> burbujas= burbujaService.findById_institucion(id);
             int j;
@@ -119,7 +119,12 @@ public class CasoPositivoController {
                 }
             }
             return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
-        } ;
+        } ;**/
+
+        if (!casoPositivo.getAlumno().equals(null)){
+            alumnoService.save(casoPositivo.getAlumno()) ; }
+        else if (!casoPositivo.getDocente().equals(null)){;
+            docenteService.save(casoPositivo.getDocente()); };
 
         return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
 
