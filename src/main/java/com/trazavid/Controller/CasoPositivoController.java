@@ -138,6 +138,8 @@ public class CasoPositivoController {
 
     }
 
+
+
     @GetMapping("/{id}")
     public ResponseEntity<?> read (@PathVariable(value = "id") Long burbujaId){
         Optional<Burbuja> oBurbuja= burbujaService.findById(burbujaId);
@@ -174,7 +176,7 @@ public class CasoPositivoController {
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
         props.put("mail.smtp.user", remitente);
-        props.put("mail.smtp.clave", "trazavid2021");    //La clave de la cuenta
+        props.put("mail.smtp.clave", "mwrrhkzyonripbpw");    //La clave de la cuenta
         props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
         props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
         props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google
@@ -189,7 +191,7 @@ public class CasoPositivoController {
             message.setSubject(asunto);
             message.setText(cuerpo);
             Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.gmail.com", remitente, "trazavid2021");
+            transport.connect("smtp.gmail.com", remitente, "mwrrhkzyonripbpw");
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
         }
