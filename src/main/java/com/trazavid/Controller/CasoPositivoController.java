@@ -180,7 +180,7 @@ public class CasoPositivoController {
         props.put("mail.smtp.clave", "mwrrhkzyonripbpw");    //La clave de la cuenta
         props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
         props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
-        props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google
+        props.put("mail.smtp.port", "25"); //El puerto SMTP seguro de Google
 
         Session session = Session.getDefaultInstance(props);
         MimeMessage message = new MimeMessage(session);
