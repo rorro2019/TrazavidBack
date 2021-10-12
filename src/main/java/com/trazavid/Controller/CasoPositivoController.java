@@ -174,7 +174,8 @@ public class CasoPositivoController {
         String remitente = "trazavidapp@gmail.com";  //Para la dirección nomcuenta@gmail.com
 
         Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
+        props.put("mail.smtp.host", "smtp-relay.gmail.com");  //El servidor SMTP de Google
+        //props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
         props.put("mail.smtp.user", remitente);
         props.put("mail.smtp.clave", "mwrrhkzyonripbpw");    //La clave de la cuenta
         props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
