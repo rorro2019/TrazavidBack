@@ -46,13 +46,17 @@ public class CasoPositivoController {
     );
     //create a new line
     @PostMapping(value="/new")
-    public ResponseEntity<?> create (@Valid @RequestBody CasoPositivo casoPositivo){
+    public String create (@Valid @RequestBody CasoPositivo casoPositivo){
+        try {
+            //  Block of code to try
+
+
         if (casoPositivo.getAlumno()!= null) {
             alumnoService.save(casoPositivo.getAlumno());
         }else if (casoPositivo.getDocente()!= null){
             docenteService.save(casoPositivo.getDocente());
         }
-        ResponseEntity salida= ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
+        String salida= ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)).toString() ;
 
         if (casoPositivo.getAlumno() != null){
             Long id = casoPositivo.getAlumno().getId_institucion() ;
@@ -139,6 +143,10 @@ public class CasoPositivoController {
 
 
         return salida;
+        }
+        catch(Exception e) {
+            return e.toString();
+        }
 
     }
 
