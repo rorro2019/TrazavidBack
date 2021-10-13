@@ -61,17 +61,17 @@ public class CasoPositivoController {
         if (casoPositivo.getAlumno() != null){
             Long id = casoPositivo.getAlumno().getId_institucion() ;
             List<Burbuja> burbujas= burbujaService.findById_institucion(id);
-            int j;
-            for (j=0; j < burbujas.size(); j++) {
+
+            for (int j=0; j < burbujas.size(); j++) {
                 Set<Alumno> toList = burbujas.get(j).getAlumnos() ;
                 List<Alumno>  alumnos = new ArrayList<>(toList);
-                int i;
-                for (i=0; i < alumnos.size(); i++) {
+
+                for (int i=0; i < alumnos.size(); i++) {
                    if( alumnos.get(i).getId_alumno()== casoPositivo.getAlumno().getId_alumno() ){
                        Optional<Burbuja> burbuja= burbujaService.findById(burbujas.get(j).getId_burbuja());
                        List<Alumno>  alumnosList = new ArrayList<>(burbuja.get().getAlumnos());
-                       int z;
-                       for (z=0; z < burbuja.get().getAlumnos().size(); z++) {
+
+                       for (int z=0; z < burbuja.get().getAlumnos().size(); z++) {
 
                            String destinatario = alumnosList.get(z).getEmail(); //A quien le quieres escribir.
                            String asunto = "Caso Positivo Covid";
@@ -82,13 +82,13 @@ public class CasoPositivoController {
                          enviarConGMail(destinatario, asunto, cuerpo);
                        }
                        List<Docente>  docentessList = new ArrayList<>(burbuja.get().getDocentes());
-                       int k;
-                       for (k=0; k < burbuja.get().getDocentes().size(); k++) {
+
+                       for (int k=0; k < burbuja.get().getDocentes().size(); k++) {
 
                            String destinatario = docentessList.get(k).getEmail(); //A quien le quieres escribir.
                            String asunto = "Caso Positivo Covid";
-                           String cuerpo = "Estimado " + docentessList.get(z).getApellido() +" "+
-                                   docentessList.get(z).getNombre()   + ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
+                           String cuerpo = "Estimado " + docentessList.get(k).getApellido() +" "+
+                                   docentessList.get(k).getNombre()   + ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
                            "" +
                                    "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
                            enviarConGMail(destinatario, asunto, cuerpo);
@@ -102,18 +102,18 @@ public class CasoPositivoController {
 
             Long id = casoPositivo.getDocente().getId_institucion() ;
             List<Burbuja> burbujas= burbujaService.findById_institucion(id);
-            int j;
-            for (j=0; j < burbujas.size(); j++) {
+
+            for (int j=0; j < burbujas.size(); j++) {
                 Set<Docente> toList = burbujas.get(j).getDocentes() ;
                 List<Docente>  docentes = new ArrayList<>(toList);
-                int i;
-                for (i=0; i < docentes.size(); i++) {
+
+                for (int i=0; i < docentes.size(); i++) {
                     if( docentes.get(i).getId_docente() == casoPositivo.getDocente().getId_docente() ){
 
                         Optional<Burbuja> burbuja= burbujaService.findById(burbujas.get(j).getId_burbuja());
                         List<Alumno>  alumnosList = new ArrayList<>(burbuja.get().getAlumnos());
-                        int z;
-                        for (z=0; z < burbuja.get().getAlumnos().size(); z++) {
+
+                        for (int z=0; z < burbuja.get().getAlumnos().size(); z++) {
 
                             String destinatario = alumnosList.get(z).getEmail(); //A quien le quieres escribir.
                             String asunto = "Caso Positivo Covid";
@@ -124,13 +124,13 @@ public class CasoPositivoController {
                             enviarConGMail(destinatario, asunto, cuerpo);
                         }
                         List<Docente>  docentessList = new ArrayList<>(burbuja.get().getDocentes());
-                        int k;
-                        for (k=0; k < burbuja.get().getDocentes().size(); k++) {
+
+                        for (int k=0; k < burbuja.get().getDocentes().size(); k++) {
 
                             String destinatario = docentessList.get(k).getEmail(); //A quien le quieres escribir.
                             String asunto = "Caso Positivo Covid";
-                            String cuerpo = "Estimado " + docentessList.get(z).getApellido() +" "+
-                                    docentessList.get(z).getNombre()   +  ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
+                            String cuerpo = "Estimado " + docentessList.get(k).getApellido() +" "+
+                                    docentessList.get(k).getNombre()   +  ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
                                     "" +
                                     "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
                              enviarConGMail(destinatario, asunto, cuerpo);
