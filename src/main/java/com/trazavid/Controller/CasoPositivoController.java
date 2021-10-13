@@ -188,7 +188,7 @@ public class CasoPositivoController {
         props.put("mail.smtp.host", "smtp.live.com");
         props.put("mail.smtp.user", remitente);
         props.put("mail.smtp.user", "81f88e77a642a4");
-
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2");
         //props.put("mail.smtp.clave", "mwrrhkzyonripbpw");    //La clave de la cuenta
         props.put("mail.smtp.clave", "trazavid2021");
         props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
