@@ -46,9 +46,16 @@ public class CasoPositivoController {
     );
     //create a new line
     @PostMapping(value="/new")
-    public ResponseEntity<?> create (@Valid @RequestBody CasoPositivo casoPositivo){
+    public String create (@Valid @RequestBody CasoPositivo casoPositivo){
+        if (!casoPositivo.getAlumno().equals(null)) {
+            alumnoService.save(casoPositivo.getAlumno());
+        }else {
+            docenteService.save(casoPositivo.getDocente());
+        }
+        String salida= ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)).toString() ;
+
         if (!casoPositivo.getAlumno().equals(null)){
-          alumnoService.save(casoPositivo.getAlumno()) ;
+
             Long id = casoPositivo.getAlumno().getId_institucion() ;
             List<Burbuja> burbujas= burbujaService.findById_institucion(id);
             int j;
@@ -87,10 +94,10 @@ public class CasoPositivoController {
                     }
                 }
             }
-            return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
+
         } ;
         if (!casoPositivo.getDocente().equals(null)){
-            docenteService.save(casoPositivo.getDocente());
+
             Long id = casoPositivo.getDocente().getId_institucion() ;
             List<Burbuja> burbujas= burbujaService.findById_institucion(id);
             int j;
@@ -129,11 +136,11 @@ public class CasoPositivoController {
                     }
                 }
             }
-            return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
+
         } ;
 
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
+        return salida ;
 
     }
 
