@@ -167,16 +167,17 @@ public class CasoPositivoController {
         return ResponseEntity.ok().build();
     }
     @GetMapping("/prueba")
-    public void read (){
+    public String read (){
 
         String destinatario =  "rodrigosebastianzalazar@gmail.com"; //A quien le quieres escribir.
         String asunto = "Caso Positivo Covid";
         String cuerpo = "Estimado Fulanito, le informamos que en los ultimos dias se detecto un caso positivo en su burbuja. Siga las siguientes instrucciones para prevenir contagios";
 
-        enviarConGMail(destinatario, asunto, cuerpo);
+        String mensaje= enviarConGMail(destinatario, asunto, cuerpo);
+        return mensaje;
     }
 
-    public void enviarConGMail(String destinatario, String asunto, String cuerpo) {
+    public String enviarConGMail(String destinatario, String asunto, String cuerpo) {
         // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.
        // String remitente = "trazavidapp@gmail.com";  //Para la dirección nomcuenta@gmail.com
 
@@ -208,9 +209,11 @@ public class CasoPositivoController {
             transport.connect("smtp.live.com", remitente, "trazavid2021");
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
+            return "se envio parece que";
         }
         catch (MessagingException me) {
             me.printStackTrace();   //Si se produce un error
+            return me.toString();
         }
     }
 }
