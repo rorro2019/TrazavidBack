@@ -140,8 +140,8 @@ public class CasoPositivoController {
 
 
     @GetMapping(value = "/all")
-    public Iterable<Burbuja> getAll() {
-        return burbujaService.findAll();
+    public Iterable<CasoPositivo> getAll() {
+        return casoPositivoService.findAll();
 
     }
 
@@ -149,7 +149,7 @@ public class CasoPositivoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> read (@PathVariable(value = "id") Long burbujaId){
-        Optional<Burbuja> oBurbuja= burbujaService.findById(burbujaId);
+        Optional<CasoPositivo> oBurbuja= casoPositivoService.findById(burbujaId);
         if(!oBurbuja.isPresent()){
             return ResponseEntity.notFound().build();
         }
@@ -160,10 +160,10 @@ public class CasoPositivoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete (@PathVariable(value= "id") Long burbujaId) {
-        if(!burbujaService.findById(burbujaId).isPresent()){
+        if(!casoPositivoService.findById(burbujaId).isPresent()){
             return ResponseEntity.notFound().build();
         }
-        burbujaService.deleteById(burbujaId);
+        casoPositivoService.deleteById(burbujaId);
         return ResponseEntity.ok().build();
     }
     @GetMapping("/prueba")
@@ -187,7 +187,7 @@ public class CasoPositivoController {
         //props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
         props.put("mail.smtp.host", "smtp.live.com");
         props.put("mail.smtp.user", remitente);
-        props.put("mail.smtp.user", "81f88e77a642a4");
+      //  props.put("mail.smtp.user", "81f88e77a642a4");
         props.put("mail.smtp.ssl.protocols", "TLSv1.2");
         //props.put("mail.smtp.clave", "mwrrhkzyonripbpw");    //La clave de la cuenta
         props.put("mail.smtp.clave", "trazavid2021");
