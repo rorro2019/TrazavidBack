@@ -27,6 +27,8 @@ public class InstitucionController {
     private CursoService cursoService;
     @Resource
     private BurbujaService burbujaService;
+    @Resource
+    private CasoPositivoService casoPositivoService;
 
     //create a new line
     @PostMapping(value="/new")
@@ -104,6 +106,10 @@ public class InstitucionController {
         return salonService.findById_institucion(institucionId);
     }
 
+    @GetMapping("/casospositivos/{id}")
+    public Iterable<CasoPositivo> readCasosPositivos (@PathVariable(value = "id") Long institucionId){
+        return casoPositivoService.findById_institucion(institucionId);
+    }
     @GetMapping("/burbujas/{id}")
     public Iterable<Burbuja> readBurbujas (@PathVariable(value = "id") Long institucionId){
         return burbujaService.findById_institucion(institucionId);

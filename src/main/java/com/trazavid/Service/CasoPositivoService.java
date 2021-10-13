@@ -12,7 +12,8 @@ public interface CasoPositivoService {
 
     public Iterable<CasoPositivo> findAll();
 
-    // public List<CasoPositivo> findById_institucion(Long id_institucion);
+     public List<CasoPositivo> findById_institucion(Long id_institucion);
+
     public Page<CasoPositivo> findAll(Pageable pageable);
 
     public Optional<CasoPositivo> findById(Long id) ;

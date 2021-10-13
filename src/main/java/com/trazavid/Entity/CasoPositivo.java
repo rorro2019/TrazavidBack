@@ -28,6 +28,9 @@ public class CasoPositivo {
     @Basic
     private java.sql.Date fechaAlta;
 
+    @Column(name="id_institucion")
+    private Long id_institucion;
+
     public CasoPositivo(Date fechaDeteccion, Docente docente, Alumno alumno, Date fechaAlta) {
         this.fechaDeteccion = fechaDeteccion;
         this.docente = docente;
@@ -78,4 +81,19 @@ public class CasoPositivo {
         this.fechaAlta = fechaAlta;
     }
 
+    public CasoPositivo(Date fechaDeteccion, Docente docente, Alumno alumno, Date fechaAlta, Long id_institucion) {
+        this.fechaDeteccion = fechaDeteccion;
+        this.docente = docente;
+        this.alumno = alumno;
+        this.fechaAlta = fechaAlta;
+        this.id_institucion = id_institucion;
+    }
+
+    public Long getId_institucion() {
+        return id_institucion;
+    }
+
+    public void setId_institucion(Long id_institucion) {
+        this.id_institucion = id_institucion;
+    }
 }

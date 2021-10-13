@@ -1,5 +1,6 @@
 package com.trazavid.Service;
 
+import com.trazavid.Entity.Burbuja;
 import com.trazavid.Entity.CasoPositivo;
 import com.trazavid.Repository.CasoPositivoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,12 @@ public class CasoPositivoServiceImpl implements CasoPositivoService{
     public List<CasoPositivo> findById_institucion(Long id_institucion) {
         return null;
     }**/
+
+    @Override
+    public List<CasoPositivo> findById_institucion(Long id_institucion) {
+        return casoPositivoRepository.findById_institucion(id_institucion);
+    }
+
 
     @Override
     public Page<CasoPositivo> findAll(Pageable pageable) {
