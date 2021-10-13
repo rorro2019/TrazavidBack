@@ -37,6 +37,13 @@ public class CasoPositivoController {
     @Resource
     private CasoPositivoService casoPositivoService;
 
+    static final String BODY = String.join(
+            System.getProperty("line.separator"),
+            "<h1>Amazon SES SMTP Email Test</h1>",
+            "<p>This email was sent with Amazon SES using the ",
+            "<a href='https://github.com/javaee/javamail'>Javamail Package</a>",
+            " for <a href='https://www.java.com'>Java</a>."
+    );
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody CasoPositivo casoPositivo){
@@ -171,16 +178,21 @@ public class CasoPositivoController {
 
     public void enviarConGMail(String destinatario, String asunto, String cuerpo) {
         // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.
-        String remitente = "trazavidapp@gmail.com";  //Para la dirección nomcuenta@gmail.com
+       // String remitente = "trazavidapp@gmail.com";  //Para la dirección nomcuenta@gmail.com
 
+        String remitente = "trazavidapp@hotmail.com";
         Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp-relay.gmail.com");  //El servidor SMTP de Google
+       // props.put("mail.smtp.host", "smtp-relay.gmail.com");  //El servidor SMTP de Google
         //props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
+        props.put("mail.smtp.host", "smtp.live.com");
         props.put("mail.smtp.user", remitente);
-        props.put("mail.smtp.clave", "mwrrhkzyonripbpw");    //La clave de la cuenta
+        props.put("mail.smtp.user", "81f88e77a642a4");
+
+        //props.put("mail.smtp.clave", "mwrrhkzyonripbpw");    //La clave de la cuenta
+        props.put("mail.smtp.clave", "trazavid2021");
         props.put("mail.smtp.auth", "true");    //Usar autenticación mediante usuario y clave
         props.put("mail.smtp.starttls.enable", "true"); //Para conectar de manera segura al servidor SMTP
-        props.put("mail.smtp.port", "25"); //El puerto SMTP seguro de Google
+        props.put("mail.smtp.port", "587"); //El puerto SMTP seguro de Google
 
         Session session = Session.getDefaultInstance(props);
         MimeMessage message = new MimeMessage(session);
@@ -188,11 +200,12 @@ public class CasoPositivoController {
         try {
             message.setFrom(new InternetAddress(remitente));
             message.addRecipient(Message.RecipientType.TO,new InternetAddress(destinatario));   //Se podrían añadir varios de la misma manera
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress("terepetrovich@gmail.com"));
+           // message.addRecipient(Message.RecipientType.TO,new InternetAddress("terepetrovich@gmail.com"));
             message.setSubject(asunto);
+          //  message.setContent(BODY,"text/html");
             message.setText(cuerpo);
             Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.gmail.com", remitente, "mwrrhkzyonripbpw");
+            transport.connect("smtp.live.com", remitente, "trazavid2021");
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
         }
