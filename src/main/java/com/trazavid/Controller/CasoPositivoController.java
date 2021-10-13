@@ -47,7 +47,7 @@ public class CasoPositivoController {
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody CasoPositivo casoPositivo){
-      /**  if (!casoPositivo.getAlumno().equals(null)){
+        if (!casoPositivo.getAlumno().equals(null)){
           alumnoService.save(casoPositivo.getAlumno()) ;
             Long id = casoPositivo.getAlumno().getId_institucion() ;
             List<Burbuja> burbujas= burbujaService.findById_institucion(id);
@@ -63,24 +63,26 @@ public class CasoPositivoController {
                        List<Alumno>  alumnosList = new ArrayList<>(burbuja.get().getAlumnos());
                        int z;
                        for (z=0; z < burbuja.get().getAlumnos().size(); z++) {
+                           String respuesta ="";
                            String destinatario = alumnosList.get(z).getEmail(); //A quien le quieres escribir.
                            String asunto = "Caso Positivo Covid";
                            String cuerpo = "Estimado " + alumnosList.get(z).getApellido() +" "+
                                    alumnosList.get(z).getNombre()   +", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
                                    "" +
                                    "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
-                           enviarConGMail(destinatario, asunto, cuerpo);
+                           respuesta=enviarConGMail(destinatario, asunto, cuerpo);
                        }
                        List<Docente>  docentessList = new ArrayList<>(burbuja.get().getDocentes());
                        int k;
                        for (k=0; k < burbuja.get().getDocentes().size(); k++) {
+                           String respuesta ="";
                            String destinatario = docentessList.get(k).getEmail(); //A quien le quieres escribir.
                            String asunto = "Caso Positivo Covid";
                            String cuerpo = "Estimado " + docentessList.get(z).getApellido() +" "+
                                    docentessList.get(z).getNombre()   + ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
                            "" +
                                    "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
-                           enviarConGMail(destinatario, asunto, cuerpo);
+                          respuesta= enviarConGMail(destinatario, asunto, cuerpo);
                        }
                     }
                 }
@@ -103,35 +105,33 @@ public class CasoPositivoController {
                         List<Alumno>  alumnosList = new ArrayList<>(burbuja.get().getAlumnos());
                         int z;
                         for (z=0; z < burbuja.get().getAlumnos().size(); z++) {
+                            String respuesta ="";
                             String destinatario = alumnosList.get(z).getEmail(); //A quien le quieres escribir.
                             String asunto = "Caso Positivo Covid";
                             String cuerpo = "Estimado " + alumnosList.get(z).getApellido() +" "+
                                     alumnosList.get(z).getNombre()   + ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
                                     "" +
                                     "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
-                            enviarConGMail(destinatario, asunto, cuerpo);
+                            respuesta=enviarConGMail(destinatario, asunto, cuerpo);
                         }
                         List<Docente>  docentessList = new ArrayList<>(burbuja.get().getDocentes());
                         int k;
                         for (k=0; k < burbuja.get().getDocentes().size(); k++) {
+                            String respuesta ="";
                             String destinatario = docentessList.get(k).getEmail(); //A quien le quieres escribir.
                             String asunto = "Caso Positivo Covid";
                             String cuerpo = "Estimado " + docentessList.get(z).getApellido() +" "+
                                     docentessList.get(z).getNombre()   +  ", le informamos que en los ultimos dias se detecto un caso positivo en su burbuja." +
                                     "" +
                                     "Le recomendamos que siga las siguientes instrucciones para prevenir contagios ...";
-                            enviarConGMail(destinatario, asunto, cuerpo);
+                            respuesta = enviarConGMail(destinatario, asunto, cuerpo);
                         }
                     }
                 }
             }
             return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
-        } ;**/
+        } ;
 
-        if (!casoPositivo.getAlumno().equals(null)){
-            alumnoService.save(casoPositivo.getAlumno()) ; }
-        else if (!casoPositivo.getDocente().equals(null)){;
-            docenteService.save(casoPositivo.getDocente()); };
 
         return ResponseEntity.status(HttpStatus.CREATED).body(casoPositivoService.save(casoPositivo)) ;
 
