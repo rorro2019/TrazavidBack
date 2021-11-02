@@ -58,8 +58,8 @@ public class Curso {
 
     //@OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(	name = "institucion_asistenciaAlumno",
-            joinColumns = @JoinColumn(name = "id_institucion"),
+    @JoinTable(	name = "curso_asistenciaAlumno",
+            joinColumns = @JoinColumn(name = "id_curso"),
             inverseJoinColumns = @JoinColumn(name = "id_asistenciaAlumno"))
     private Set<AsistenciaAlumno> AsistenciaAlumno = new HashSet<>();
 
@@ -196,4 +196,5 @@ public class Curso {
         this.id_institucion = id_institucion;
         AsistenciaAlumno = asistenciaAlumno;
     }
+
 }

@@ -1,13 +1,7 @@
 package com.trazavid.Controller;
 
-import com.trazavid.Entity.Asignatura;
-import com.trazavid.Entity.AsistenciaAlumno;
-import com.trazavid.Entity.Curso;
-import com.trazavid.Entity.Institucion;
-import com.trazavid.Service.AsignaturaService;
-import com.trazavid.Service.AsistenciaAlumnoService;
-import com.trazavid.Service.CursoService;
-import com.trazavid.Service.InstitucionService;
+import com.trazavid.Entity.*;
+import com.trazavid.Service.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,6 +23,9 @@ public class AsistenciaAlumnoController {
     @Resource
     private CursoService cursoService;
 
+    @Resource
+    private AlumnoService alumnoService;
+
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody AsistenciaAlumno asistenciaAlumno){
@@ -37,6 +34,12 @@ public class AsistenciaAlumnoController {
             return ResponseEntity.notFound().build();
         } else {
             Set<AsistenciaAlumno> arrayAsistencia = curso.get().getAsistenciaAlumno() ;
+            int y;
+            for (y=0; y< asistenciaAlumno.getAlumnos().size(); y++) {
+                Alumno[] arrayAlumnos= asistenciaAlumno.getAlumnos().toArray(new Alumno[0]);
+                alumnoService.save(arrayAlumnos[y]);
+
+            }
             asistenciaAlumnoService.save(asistenciaAlumno);
             arrayAsistencia.add(asistenciaAlumno) ;
             curso.get().setAsistenciaAlumno(arrayAsistencia);
