@@ -22,6 +22,7 @@ import java.util.Set;
 @RequestMapping("/api/alumnos")
 @CrossOrigin("*")
 public class AlumnoController {
+
     @Resource
     private AlumnoService alumnoService;
     @Resource
@@ -101,8 +102,5 @@ public class AlumnoController {
         alumnoService.deleteById(alumnoId);
         return ResponseEntity.ok().build();
     }
-
-
-
 
 }

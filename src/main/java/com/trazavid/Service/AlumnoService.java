@@ -19,4 +19,5 @@ public interface AlumnoService {
     public Alumno save(Alumno user);
 
     public void deleteById(Long id) ;
+
 }

@@ -1,10 +1,8 @@
 package com.trazavid.Controller;
 
 
-import com.trazavid.Entity.Asignatura;
-import com.trazavid.Entity.Curso;
-import com.trazavid.Entity.Institucion;
-import com.trazavid.Entity.Salon;
+import com.trazavid.Entity.*;
+import com.trazavid.Service.AsistenciaAlumnoService;
 import com.trazavid.Service.CursoService;
 import com.trazavid.Service.InstitucionService;
 import com.trazavid.Service.SalonService;
@@ -30,6 +28,8 @@ public class CursoController {
     private SalonService salonService;
     @Resource
     private InstitucionService institucionService;
+    @Resource
+    private AsistenciaAlumnoService asistenciaAlumnoService;
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody Curso curso){
@@ -81,7 +81,10 @@ public class CursoController {
         return ResponseEntity.ok(oCurso);
     }
 
-
+    @GetMapping("/asistenciaAlumno/{id}")
+    public Iterable<AsistenciaAlumno> readAsistenciaAlumnos (@PathVariable(value = "id") Long cursoid){
+        return asistenciaAlumnoService.findById_curso(cursoid);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete (@PathVariable(value= "id") Long cursooId) {

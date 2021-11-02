@@ -56,6 +56,13 @@ public class Curso {
     @Column(name="id_institucion")
     private Long id_institucion;
 
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "institucion_asistenciaAlumno",
+            joinColumns = @JoinColumn(name = "id_institucion"),
+            inverseJoinColumns = @JoinColumn(name = "id_asistenciaAlumno"))
+    private Set<AsistenciaAlumno> AsistenciaAlumno = new HashSet<>();
+
     public Long getId_institucion() {
         return id_institucion;
     }
@@ -168,5 +175,25 @@ public class Curso {
 
     public void setAlumno(Set<Alumno> alumno) {
         this.alumno = alumno;
+    }
+
+    public Set<com.trazavid.Entity.AsistenciaAlumno> getAsistenciaAlumno() {
+        return AsistenciaAlumno;
+    }
+
+    public void setAsistenciaAlumno(Set<com.trazavid.Entity.AsistenciaAlumno> asistenciaAlumno) {
+        AsistenciaAlumno = asistenciaAlumno;
+    }
+
+    public Curso(Integer division, String subdivision, String turno, com.trazavid.Entity.Salon salon, Set<com.trazavid.Entity.Docente> docente, Set<Alumno> alumno, Date fechabaja, Long id_institucion, Set<com.trazavid.Entity.AsistenciaAlumno> asistenciaAlumno) {
+        this.division = division;
+        this.subdivision = subdivision;
+        this.turno = turno;
+        Salon = salon;
+        Docente = docente;
+        this.alumno = alumno;
+        this.fechabaja = fechabaja;
+        this.id_institucion = id_institucion;
+        AsistenciaAlumno = asistenciaAlumno;
     }
 }

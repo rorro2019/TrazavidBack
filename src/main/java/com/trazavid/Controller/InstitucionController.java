@@ -29,7 +29,8 @@ public class InstitucionController {
     private BurbujaService burbujaService;
     @Resource
     private CasoPositivoService casoPositivoService;
-
+    @Resource
+    private AsistenciaDocenteService asistenciaDocenteService;
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody Institucion institucion){
@@ -89,6 +90,11 @@ public class InstitucionController {
     @GetMapping("/alumnos/{id}")
     public Iterable<Alumno> readAlumnos (@PathVariable(value = "id") Long institucionId){
        return alumnoService.findById_institucion(institucionId);
+    }
+
+    @GetMapping("/asistenciaDocente/{id}")
+    public Iterable<AsistenciaDocente> readAsistenciaDocentes (@PathVariable(value = "id") Long institucionId){
+        return asistenciaDocenteService.findById_institucion(institucionId);
     }
 
     @GetMapping("/docentes/{id}")

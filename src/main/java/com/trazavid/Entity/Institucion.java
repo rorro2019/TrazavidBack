@@ -133,10 +133,18 @@ public class Institucion {
     private Set<Asignatura> Asignatura = new HashSet<>();
 
 
+
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "institucion_asistenciaDocente",
+            joinColumns = @JoinColumn(name = "id_institucion"),
+            inverseJoinColumns = @JoinColumn(name = "id_asistenciaDocente"))
+    private Set<AsistenciaDocente> AsistenciaDocente = new HashSet<>();
+
     public Institucion() {
     }
 
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche) {
+    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche, Integer aforo, Long idPersonal, Set<com.trazavid.Entity.Salon> salon, Set<com.trazavid.Entity.Curso> curso, Set<com.trazavid.Entity.Alumno> alumno, Set<com.trazavid.Entity.Docente> docente, Set<com.trazavid.Entity.Asignatura> asignatura, Set<com.trazavid.Entity.AsistenciaDocente> asistenciaDocente) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
@@ -152,14 +160,14 @@ public class Institucion {
         this.manana = manana;
         this.tarde = tarde;
         this.noche = noche;
-    }
-
-    public Set<Salon> getSalon() {
-        return Salon;
-    }
-
-    public void setSalon(Set<Salon> salon) {
+        this.aforo = aforo;
+        this.idPersonal = idPersonal;
         Salon = salon;
+        Curso = curso;
+        Alumno = alumno;
+        Docente = docente;
+        Asignatura = asignatura;
+        AsistenciaDocente = asistenciaDocente;
     }
 
     public Long getId_institucion() {
@@ -290,49 +298,12 @@ public class Institucion {
         this.noche = noche;
     }
 
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche, Long idPersonal, Set<com.trazavid.Entity.Salon> salon) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.provincia = provincia;
-        this.telefono = telefono;
-        this.director = director;
-        this.comun = comun;
-        this.especial = especial;
-        this.otra = otra;
-        this.inicial = inicial;
-        this.primario = primario;
-        this.secundario = secundario;
-        this.manana = manana;
-        this.tarde = tarde;
-        this.noche = noche;
-        this.idPersonal = idPersonal;
-        Salon = salon;
+    public Set<com.trazavid.Entity.Salon> getSalon() {
+        return Salon;
     }
 
-    public Institucion(String nombre, String direccion, String ciudad, String provincia, Long telefono, Integer director, Boolean comun, Boolean especial, Boolean otra, Boolean inicial, Boolean primario, Boolean secundario, Boolean manana, Boolean tarde, Boolean noche, Integer aforo, Long idPersonal, Set<com.trazavid.Entity.Salon> salon, Set<com.trazavid.Entity.Curso> curso, Set<com.trazavid.Entity.Alumno> alumno, Set<com.trazavid.Entity.Docente> docente, Set<com.trazavid.Entity.Asignatura> asignatura) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.provincia = provincia;
-        this.telefono = telefono;
-        this.director = director;
-        this.comun = comun;
-        this.especial = especial;
-        this.otra = otra;
-        this.inicial = inicial;
-        this.primario = primario;
-        this.secundario = secundario;
-        this.manana = manana;
-        this.tarde = tarde;
-        this.noche = noche;
-        this.aforo = aforo;
-        this.idPersonal = idPersonal;
+    public void setSalon(Set<com.trazavid.Entity.Salon> salon) {
         Salon = salon;
-        Curso = curso;
-        Alumno = alumno;
-        Docente = docente;
-        Asignatura = asignatura;
     }
 
     public Set<com.trazavid.Entity.Curso> getCurso() {
@@ -365,5 +336,13 @@ public class Institucion {
 
     public void setAsignatura(Set<com.trazavid.Entity.Asignatura> asignatura) {
         Asignatura = asignatura;
+    }
+
+    public Set<com.trazavid.Entity.AsistenciaDocente> getAsistenciaDocente() {
+        return AsistenciaDocente;
+    }
+
+    public void setAsistenciaDocente(Set<com.trazavid.Entity.AsistenciaDocente> asistenciaDocente) {
+        AsistenciaDocente = asistenciaDocente;
     }
 }
