@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SalonRepository extends JpaRepository<Salon, Long>, JpaSpecificationExecutor<Salon> {
+public interface SalonRepository extends JpaRepository<Salon, Long> {
     @Query(nativeQuery = true,value = " select  * from Salon where id_institucion = ? ")
     List<Salon> findById_institucion(Long id_institucion);
 

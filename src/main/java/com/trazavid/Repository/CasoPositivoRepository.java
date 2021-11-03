@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CasoPositivoRepository extends JpaRepository<CasoPositivo,Long>, JpaSpecificationExecutor<CasoPositivo> {
+public interface CasoPositivoRepository extends JpaRepository<CasoPositivo,Long> {
     @Query(nativeQuery = true,value = " select  * from CasoPositivo where id_institucion = ? ")
     List<CasoPositivo> findById_institucion(Long id_institucion);
 }

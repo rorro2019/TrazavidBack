@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Repository
-public interface AsistenciaAlumnoRepository extends JpaRepository<AsistenciaAlumno,Long> , JpaSpecificationExecutor<AsistenciaAlumno> {
+public interface AsistenciaAlumnoRepository extends JpaRepository<AsistenciaAlumno,Long>  {
 
     @Query(nativeQuery = true,value = " select  * from AsistenciaAlumno where id_curso = ? ")
     List<AsistenciaAlumno> findById_curso(Long id_curso);

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AsistenciaDocenteRepository extends JpaRepository<AsistenciaDocente,Long> , JpaSpecificationExecutor<AsistenciaDocente> {
+public interface AsistenciaDocenteRepository extends JpaRepository<AsistenciaDocente,Long>  {
 
     @Query(nativeQuery = true,value = " select  * from AsistenciaDocente where id_institucion = ? ")
     List<AsistenciaDocente> findById_institucion(Long id_institucion);

@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Repository
-public interface AlumnoRepository extends JpaRepository<Alumno, Long>, JpaSpecificationExecutor<Alumno> {
+public interface AlumnoRepository extends JpaRepository<Alumno, Long> {
     // consulta difusa
     @Query(nativeQuery = true,value = " select  * from Alumno where id_institucion = ? ")
     List<Alumno> findById_institucion(Long id_institucion);

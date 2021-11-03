@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BurbujaRepository extends JpaRepository<Burbuja, Long> , JpaSpecificationExecutor<Burbuja> {
+public interface BurbujaRepository extends JpaRepository<Burbuja, Long> {
     @Query(nativeQuery = true,value = " select  * from Burbuja where id_institucion = ? ")
     List<Burbuja> findById_institucion(Long id_institucion);
 

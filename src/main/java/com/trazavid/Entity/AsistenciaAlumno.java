@@ -33,6 +33,9 @@ public class AsistenciaAlumno {
         this.alumnos = alumnos;
     }
 
+    public AsistenciaAlumno() {
+    }
+
     public Long getId_asistenciaAlumno() {
         return id_asistenciaAlumno;
     }
