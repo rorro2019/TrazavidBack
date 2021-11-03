@@ -345,4 +345,5 @@ public class Institucion {
     public void setAsistenciaDocente(Set<com.trazavid.Entity.AsistenciaDocente> asistenciaDocente) {
         AsistenciaDocente = asistenciaDocente;
     }
+
 }
