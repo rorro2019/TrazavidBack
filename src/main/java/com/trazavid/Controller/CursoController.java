@@ -82,8 +82,10 @@ public class CursoController {
     }
 
     @GetMapping("/asistenciaAlumno/{id}")
-    public Iterable<AsistenciaAlumno> readAsistenciaAlumnos (@PathVariable(value = "id") Long cursoid){
-        return asistenciaAlumnoService.findById_curso(cursoid);
+    public Set<AsistenciaAlumno> readAsistenciaAlumnos (@PathVariable(value = "id") Long cursoid){
+        Set<AsistenciaAlumno> asistenciaAlumno = cursoService.findById(cursoid).get().getAsistenciaAlumno();
+
+        return asistenciaAlumno;
     }
 
     @DeleteMapping("/{id}")
