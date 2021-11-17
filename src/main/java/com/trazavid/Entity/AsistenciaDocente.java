@@ -65,4 +65,6 @@ public class AsistenciaDocente {
         Docentes = docentes;
     }
 
+    public AsistenciaDocente() {
+    }
 }

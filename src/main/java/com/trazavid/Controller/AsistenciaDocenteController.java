@@ -18,7 +18,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/aiastenciaDocente")
+@RequestMapping("/api/asistenciaDocente")
 @CrossOrigin("*")
 public class AsistenciaDocenteController {
 
