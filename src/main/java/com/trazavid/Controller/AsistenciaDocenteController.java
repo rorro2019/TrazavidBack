@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RestController
-@RequestMapping("/api/aiastenciaDocente")
+@RequestMapping("/api/asistenciaDocente")
 @CrossOrigin("*")
 public class AsistenciaDocenteController {
 
@@ -31,25 +29,59 @@ public class AsistenciaDocenteController {
 
     //create a new line
     @PostMapping(value="/new")
-    public ResponseEntity<?> create (@Valid @RequestBody AsistenciaDocente asistenciaDocente){
-        Optional<Institucion> institucion= institucionService.findById(asistenciaDocente.getId_institucion());
+    public ResponseEntity<?> create (@Valid @RequestBody Docente docente){
+
+        Optional<Institucion> institucion= institucionService.findById(docente.getId_institucion());
+
         if(!institucion.isPresent()){
             return ResponseEntity.notFound().build();
         } else {
+            Long idInstitucion = docente.getId_institucion();
+            //obtengo fecha del sistema
+            Date myDate = new Date();
+            String fecha= new SimpleDateFormat("dd-MM-yyyy").format(myDate);
+            AsistenciaDocentePK asistenciaDocentePK= new AsistenciaDocentePK(fecha,idInstitucion );
+            String id= idInstitucion+" & "+ fecha;
+            Optional<AsistenciaDocente> asistenciaDocente= asistenciaDocenteService.findById(id);
 
-            Set<AsistenciaDocente> arrayAlumno = institucion.get().getAsistenciaDocente();
-            int y;
-            for (y=0; y< asistenciaDocente.getDocentes().size(); y++) {
-                Docente[] arrayDocentes= asistenciaDocente.getDocentes().toArray(new Docente[0]);
-                docenteService.save(arrayDocentes[y]);
+            if(!asistenciaDocente.isPresent()){
+                //aca creo y agrego
+                AsistenciaDocente asistenciaDocenteNew =new AsistenciaDocente();
 
-            }
-            asistenciaDocenteService.save(asistenciaDocente);
-            arrayAlumno.add(asistenciaDocente) ;
-            institucion.get().setAsistenciaDocente(arrayAlumno); ;
+                asistenciaDocenteNew.setId_asistenciaDocente(id);
+                asistenciaDocenteNew.setFecha(fecha);
+                asistenciaDocenteNew.setId_institucion(idInstitucion);
+                List<Docente>  docentesList = new ArrayList<>();
+                Docente docenteReq= docente;
+                docentesList.add(docenteReq);
+                Set<Docente> lisDocentes = new HashSet<>(docentesList);
+                asistenciaDocenteNew.setDocentes(lisDocentes);
+                docenteService.save(docente);
+                asistenciaDocenteService.save(asistenciaDocenteNew);
+                Set<AsistenciaDocente> arrayDocente= institucion.get().getAsistenciaDocente();
+                arrayDocente.add(asistenciaDocenteNew) ;
+                institucion.get().setAsistenciaDocente(arrayDocente); ;
 
-            return ResponseEntity.status(HttpStatus.CREATED).body(institucionService.save(institucion.get()));
+                return ResponseEntity.status(HttpStatus.CREATED).body(institucionService.save(institucion.get()));
+
+
+            }else {
+            //aca agrego
+            Set<AsistenciaDocente> arrayDocente= institucion.get().getAsistenciaDocente();
+                //aca creo y agrego
+                Set<Docente> docentesList = asistenciaDocente.get().getDocentes() ;;
+                docentesList.add(docente);
+                asistenciaDocente.get().setDocentes(docentesList);
+                //docenteService.save(docente);
+                asistenciaDocenteService.save(asistenciaDocente.get());
+
+                arrayDocente.add(asistenciaDocente.get()) ;
+                institucion.get().setAsistenciaDocente(arrayDocente); ;
+
+                return ResponseEntity.status(HttpStatus.CREATED).body(institucionService.save(institucion.get()));
+
         }
+    }
     }
 
     @GetMapping(value = "/all")
@@ -57,7 +89,7 @@ public class AsistenciaDocenteController {
         return asistenciaDocenteService.findAll();
     }
 
-    @GetMapping("/{id}")
+   /** @GetMapping("/{id}")
     public ResponseEntity<?> read (@PathVariable(value = "id") Long alumnoId){
         Optional<AsistenciaDocente> oAlumno= asistenciaDocenteService.findById(alumnoId);
         if(!oAlumno.isPresent()){
@@ -74,5 +106,5 @@ public class AsistenciaDocenteController {
         }
         asistenciaDocenteService.deleteById(alumnoId);
         return ResponseEntity.ok().build();
-    }
+    }**/
 }

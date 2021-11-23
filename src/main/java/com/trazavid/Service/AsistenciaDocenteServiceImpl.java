@@ -2,6 +2,7 @@ package com.trazavid.Service;
 
 import com.trazavid.Entity.AsistenciaAlumno;
 import com.trazavid.Entity.AsistenciaDocente;
+import com.trazavid.Entity.AsistenciaDocentePK;
 import com.trazavid.Repository.AsistenciaAlumnoRepository;
 import com.trazavid.Repository.AsistenciaDocenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class AsistenciaDocenteServiceImpl implements AsistenciaDocenteService{
     @Autowired
     private AsistenciaDocenteRepository alumnoRepository;
 
-    @Override
+   @Override
     @Transactional(readOnly = true)
     public Iterable<AsistenciaDocente> findAll() {
         return alumnoRepository.findAll();
@@ -45,7 +46,7 @@ public class AsistenciaDocenteServiceImpl implements AsistenciaDocenteService{
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<AsistenciaDocente> findById(Long id) {
+    public Optional<AsistenciaDocente> findById(String id) {
         return alumnoRepository.findById(id);
     }
 
@@ -56,9 +57,9 @@ public class AsistenciaDocenteServiceImpl implements AsistenciaDocenteService{
         return alumnoRepository.save(asistenciaDocente);
     }
 
-    @Override
+    /**@Override
     @Transactional
     public void deleteById(Long id) {
         alumnoRepository.deleteById(id);
-    }
+    }**/
 }

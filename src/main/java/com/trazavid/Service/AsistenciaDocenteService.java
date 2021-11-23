@@ -2,6 +2,7 @@ package com.trazavid.Service;
 
 import com.trazavid.Entity.AsistenciaAlumno;
 import com.trazavid.Entity.AsistenciaDocente;
+import com.trazavid.Entity.AsistenciaDocentePK;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -14,10 +15,10 @@ public interface AsistenciaDocenteService {
     public List<AsistenciaDocente> findById_institucion(Long id_institucion);
     public Page<AsistenciaDocente> findAll(Pageable pageable);
 
-    public Optional<AsistenciaDocente> findById(Long id) ;
+    Optional<AsistenciaDocente> findById(String id) ;
 
     public AsistenciaDocente save(AsistenciaDocente user);
 
-    public void deleteById(Long id) ;
+    //public void deleteById(Long id) ;
 
 }
