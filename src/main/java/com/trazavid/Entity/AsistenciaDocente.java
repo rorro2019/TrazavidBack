@@ -1,5 +1,7 @@
 package com.trazavid.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
@@ -8,17 +10,18 @@ import java.util.Set;
 @Entity
 @Table(name ="AsistenciaDocente")
 public class AsistenciaDocente {
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // private Long id_asistenciaDocente;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_asistenciaDocente;
+    private String id_asistenciaDocente;
 
-    @Column(name = "fecha")
-    @Basic
-    private java.sql.Date fecha;
 
     @Column(name="id_institucion")
     private Long id_institucion;
+
+    @Column
+    private String fecha;
 
     //@OneToMany(cascade = CascadeType.ALL, mappedBy = "institucion")
     @ManyToMany(fetch = FetchType.LAZY)
@@ -27,26 +30,13 @@ public class AsistenciaDocente {
             inverseJoinColumns = @JoinColumn(name = "id_docente"))
     private Set<Docente> Docentes = new HashSet<>();
 
-    public AsistenciaDocente(Date fecha, Long id_institucion, Set<Docente> docentes) {
-        this.fecha = fecha;
+    public AsistenciaDocente() {
+    }
+
+    public AsistenciaDocente(String id_asistenciaDocente, Long id_institucion, Set<Docente> docentes) {
+        this.id_asistenciaDocente = id_asistenciaDocente;
         this.id_institucion = id_institucion;
         Docentes = docentes;
-    }
-
-    public Long getId_asistenciaDocente() {
-        return id_asistenciaDocente;
-    }
-
-    public void setId_asistenciaDocente(Long id_asistenciaDocente) {
-        this.id_asistenciaDocente = id_asistenciaDocente;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
     }
 
     public Long getId_institucion() {
@@ -61,10 +51,31 @@ public class AsistenciaDocente {
         return Docentes;
     }
 
+    public String getId_asistenciaDocente() {
+        return id_asistenciaDocente;
+    }
+
+    public void setId_asistenciaDocente(String id_asistenciaDocente) {
+        this.id_asistenciaDocente = id_asistenciaDocente;
+    }
+
     public void setDocentes(Set<Docente> docentes) {
         Docentes = docentes;
     }
 
-    public AsistenciaDocente() {
+    public AsistenciaDocente(String id_asistenciaDocente, Long id_institucion, String fecha, Set<Docente> docentes) {
+        this.id_asistenciaDocente = id_asistenciaDocente;
+        this.id_institucion = id_institucion;
+        this.fecha = fecha;
+        Docentes = docentes;
     }
-}
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+
+
+}}

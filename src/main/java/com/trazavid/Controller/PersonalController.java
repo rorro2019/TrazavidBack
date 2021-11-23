@@ -24,7 +24,6 @@ public class PersonalController {
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody Personal personal){
         return ResponseEntity.status(HttpStatus.CREATED).body(personalService.save(personal));
-
     }
 
     @GetMapping(value = "/all")

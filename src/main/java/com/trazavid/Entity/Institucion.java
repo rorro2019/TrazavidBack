@@ -138,7 +138,7 @@ public class Institucion {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "institucion_asistenciaDocente",
             joinColumns = @JoinColumn(name = "id_institucion"),
-            inverseJoinColumns = @JoinColumn(name = "id_asistenciaDocente"))
+            inverseJoinColumns = @JoinColumn(name = "id_asistenciaDocente") )
     private Set<AsistenciaDocente> AsistenciaDocente = new HashSet<>();
 
     public Institucion() {
