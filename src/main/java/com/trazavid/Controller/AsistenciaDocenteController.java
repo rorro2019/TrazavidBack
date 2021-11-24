@@ -40,7 +40,9 @@ public class AsistenciaDocenteController {
             String id= institucionId+" & "+ fecha;
             Optional<AsistenciaDocente> asistenciaDocente= asistenciaDocenteService.findById(id);
             if(!asistenciaDocente.isPresent()){
-                return null;
+                Set<Docente> docentes = institucion.get().getDocente();
+                List<Docente>  docentesLista = new ArrayList<>(docentes);
+                return docentesLista;
             }else {
                 Set<Docente> docentes = institucion.get().getDocente();
                 Set<Docente> docentesPresentes= asistenciaDocente.get().getDocentes();
