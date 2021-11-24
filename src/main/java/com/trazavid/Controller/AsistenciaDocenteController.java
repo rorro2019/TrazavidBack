@@ -27,6 +27,37 @@ public class AsistenciaDocenteController {
     @Resource
     private DocenteService docenteService;
 
+    @GetMapping("/ausentes/{id}")
+    public List<Docente> read (@PathVariable(value = "id") Long institucionId){
+        Optional<Institucion> institucion= institucionService.findById(institucionId);
+
+        if(!institucion.isPresent()){
+            return null;
+        } else{
+            //obtengo fecha del sistema
+            Date myDate = new Date();
+            String fecha= new SimpleDateFormat("dd-MM-yyyy").format(myDate);
+            String id= institucionId+" & "+ fecha;
+            Optional<AsistenciaDocente> asistenciaDocente= asistenciaDocenteService.findById(id);
+            if(!asistenciaDocente.isPresent()){
+                return null;
+            }else {
+                Set<Docente> docentes = institucion.get().getDocente();
+                Set<Docente> docentesPresentes= asistenciaDocente.get().getDocentes();
+                List<Docente>  docentesLista = new ArrayList<>(docentes);
+                List<Docente>  docentesListaPresentes = new ArrayList<>(docentesPresentes);
+                Boolean  salida = docentesLista.removeAll(docentesListaPresentes) ;
+                if (salida==true) {
+                    return docentesLista;
+                }else{
+                    return null;
+                }
+
+            }
+        }
+
+    }
+
     //create a new line
     @PostMapping(value="/new")
     public ResponseEntity<?> create (@Valid @RequestBody Docente docente){
@@ -89,15 +120,7 @@ public class AsistenciaDocenteController {
         return asistenciaDocenteService.findAll();
     }
 
-   /** @GetMapping("/{id}")
-    public ResponseEntity<?> read (@PathVariable(value = "id") Long alumnoId){
-        Optional<AsistenciaDocente> oAlumno= asistenciaDocenteService.findById(alumnoId);
-        if(!oAlumno.isPresent()){
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(oAlumno);
-    }
-
+/**
     // Delete an User
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete (@PathVariable(value= "id") Long alumnoId) {
