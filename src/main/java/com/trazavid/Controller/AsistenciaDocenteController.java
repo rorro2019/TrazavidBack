@@ -117,6 +117,22 @@ public class AsistenciaDocenteController {
     }
     }
 
+    @GetMapping("/{id}")
+    public List<Docente> readDocentes (@PathVariable(value = "id") String institucionId){
+
+            Optional<AsistenciaDocente> asistenciaDocente= asistenciaDocenteService.findById(institucionId);
+            if(!asistenciaDocente.isPresent()){
+
+                return null;
+            }else {
+                Set<Docente> docentesPresentes= asistenciaDocente.get().getDocentes();
+                List<Docente>  docentesListaPresentes = new ArrayList<>(docentesPresentes);
+                    return docentesListaPresentes;
+
+
+            }
+    }
+
     @GetMapping(value = "/all")
     public Iterable<AsistenciaDocente> getAll() {
         return asistenciaDocenteService.findAll();
